@@ -13,18 +13,18 @@ public class PatternPrinting {
 			for(j=i;j<=x;j++) {
 				System.out.print("*");
 			}
-			for(k=x;k>=0;k--) {
+			/*for(k=x;k>=0;k--) {
 				System.out.print(" ");
-			}
+			}*/
 			System.out.println();
 		}
 		for(i=x-1;i>=0;i--) {
 			for(j=i;j<x;j++) {
 				System.out.print("*");
 			}
-			for(k=x;k>=0;k--) {
+			/*for(k=x;k>=0;k--) {
 				System.out.print(" ");
-			}
+			}*/
 			System.out.println();
 		}
 	}
