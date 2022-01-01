@@ -7,7 +7,6 @@ import java.util.Scanner;
 public class RomanToInteger {
 
     public static void main(String[] args) {
-
         System.out.println("Enter Roman");
         Scanner sc = new Scanner(System.in);
         String str = sc.nextLine();
