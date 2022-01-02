@@ -18,6 +18,25 @@ import java.util.ArrayList;
 import java.util.List;
 
 class StringCoding {
+
+    /*F inding pattern a then b only */
+    public boolean checkString(String s) {
+
+        //find first b, till then skip all chars, should be a's
+        int i = 0;
+        while (i < s.length() && s.charAt(i) != 'b') {
+            i++;
+        }
+        //furthermore, all b's are expected, so no a's should be there
+        while (i < s.length()){
+            if ('a' == s.charAt(i)) {
+                return false;
+            }
+            i++;
+        }
+        return true;
+    }
+
     public static void main(String[] args) throws Exception {
         /* Sample code to perform I/O:
          * Use either of these methods for input
