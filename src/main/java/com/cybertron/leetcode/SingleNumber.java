@@ -21,7 +21,7 @@ public class SingleNumber {
     public int singleNumber_2(int[] nums) {
         int n = 0;
         for(int i : nums){
-            n ^= i;
+            n ^= i; //this is ex-or operation
         }
         return n;
     }
