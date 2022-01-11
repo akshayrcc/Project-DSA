@@ -1,6 +1,6 @@
 package com.cybertron.stringops;
 
-import java.util.Arrays;
+import java.util.*;
 
 public class StringOperations {
 
@@ -12,10 +12,14 @@ public class StringOperations {
         //reverseString(s);
         System.out.println(s[0]);
         System.out.println(Arrays.toString(s));
+
+        String firstUnique = "aadadaad";
+        String firstUnique2 = "loveleetcode";
+        System.out.println("First Unique: " + firstUniqChar_1(firstUnique2));
+
     }
 
     public static void reverseString(char[] s) {
-
         int length = s.length;
         int ptr_1 = 0, ptr_2 = length - 1;
 
@@ -31,4 +35,74 @@ public class StringOperations {
         arr[p1] = arr[p2];
         arr[p2] = temp;
     }
+
+    public static int firstUniqChar_1(String s) {
+        LinkedHashMap<Character, Integer> linkedHashMap = new LinkedHashMap<>();
+        Set<Character> alreadyDuplicate = new HashSet<>();
+        int position = 0;
+        int firstUniqueIndex = -1;
+        for (Character ch : s.toCharArray()) {
+            if (linkedHashMap.containsKey(ch)) {
+                linkedHashMap.remove(ch);
+                alreadyDuplicate.add(ch
+                );
+            } else {
+                if (!alreadyDuplicate.contains(ch)) {
+                    linkedHashMap.put(ch, position);
+                }
+            }
+            position++;
+        }
+        if (linkedHashMap.size() > 0) {
+            Map.Entry<Character, Integer> entry = linkedHashMap.entrySet().iterator().next();
+            firstUniqueIndex = entry.getValue();
+        }
+        return firstUniqueIndex;
+    }
+
+    public int firstUniqChar_2(String s) {
+        int ans = Integer.MAX_VALUE;
+        for (char i = 'a'; i <= 'z'; i++) {
+            int ind = s.indexOf(i);
+            //checking given char occurrence is first and last in the string implies it's a unique char
+            if (ind != -1 && ind == s.lastIndexOf(i))
+                ans = Math.min(ans, ind);
+        }
+        if (ans == Integer.MAX_VALUE)
+            return -1;
+        return ans;
+    }
+
+    public int firstUniqChar_3(String s) {
+        if (s == null || s.length() == 0) {
+            return -1;
+        }
+
+        //count the occurrences of all the chars in the string and return the first unique char.
+        //Sol_1
+        /*int[] charCount = new int[256];
+        for (char c : s.toCharArray()) {
+            charCount[c]++;
+        }
+
+        for (int i = 0; i < s.length(); i++) {
+            if (charCount[s.charAt(i)] == 1) {
+                return i;
+            }
+        }
+        return -1;*/
+
+        //Sol_2
+        int a[] = new int[26];
+        for (int i = 0; i < s.length(); i++) {
+            a[s.charAt(i) - 'a']++;
+        }
+        for (int i = 0; i < s.length(); i++) {
+            if (a[s.charAt(i) - 'a'] == 1)
+                return i;
+        }
+        return -1;
+    }
+
+
 }
