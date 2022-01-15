@@ -50,7 +50,7 @@ public class ValidSudoku {
         return true;
     }
 
-    public boolean isValidSudoku_1(char[][] board) {
+    public boolean isValidSudoku_2(char[][] board) {
         if (board == null || board.length != 9 || board[0].length != 9)
             return false;
 
