@@ -34,6 +34,7 @@ public class StringtoInteger {
         }
         // Give back the sign to the converted number
         number = isNegative ? -number : number;
+
         if (number < INT_MIN) {
             return INT_MIN;
         }
@@ -41,5 +42,51 @@ public class StringtoInteger {
             return INT_MAX;
         }
         return (int) number;
+    }
+
+
+    public int myAtoi_2(String s) {
+        Boolean negative = null;
+        long result = 0;
+        for (int i = 0; i < s.length(); i++) {
+            char c = s.charAt(i);
+            if (c == '-') {
+                if (negative != null) {
+                    break;
+                }
+                negative = Boolean.TRUE;
+            } else if (c == '+') {
+                if (negative != null) {
+                    break;
+                }
+                negative = Boolean.FALSE;
+            } else if (c == ' ') {
+                if (negative != null) {
+                    break;
+                }
+            } else if (c >= '0' && c <= '9') {
+                if (negative == null) {
+                    negative = Boolean.FALSE;
+                }
+                int num = c - '0';
+                if (result >= Long.MAX_VALUE / 10) {
+                    result = Long.MAX_VALUE;
+                } else {
+                    result = result * 10 + num;
+                }
+
+                //System.out.println("result:" + result);
+            } else {
+                break;
+            }
+        }
+
+        if (negative == null) {
+            return 0;
+        }
+        if (negative == Boolean.TRUE) {
+            return -result < Integer.MIN_VALUE ? Integer.MIN_VALUE : -(int) result;
+        }
+        return result > Integer.MAX_VALUE ? Integer.MAX_VALUE : (int) result;
     }
 }
