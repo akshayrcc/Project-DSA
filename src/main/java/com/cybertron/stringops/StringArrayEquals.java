@@ -1,4 +1,4 @@
-package com.cybertron.leetcode;
+package com.cybertron.stringops;
 
 
 public class StringArrayEquals {
