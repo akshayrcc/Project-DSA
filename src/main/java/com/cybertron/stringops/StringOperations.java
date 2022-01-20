@@ -104,5 +104,62 @@ public class StringOperations {
         return -1;
     }
 
+    public String longestCommonPrefix(String[] strs) {
+
+        if (strs == null || strs.length == 0) {
+            return "";
+        }
+
+        if (strs.length == 1) {
+            return strs[0];
+        }
+
+        int i = 0;
+        while (true) {
+            boolean flag = true;
+            for (int j = 1; j < strs.length; j++) {
+                if (strs[j].length() <= i || strs[j - 1].length() <= i
+                        || strs[j].charAt(i) != strs[j - 1].charAt(i)) {
+                    flag = false;
+                    break;
+                }
+            }
+
+            if (flag) {
+                i++;
+            } else {
+                break;
+            }
+        }
+
+        return strs[0].substring(0, i);
+    }
+
+    public int strStr(String haystack, String needle) {
+        if (haystack == null || needle == null)
+            return 0;
+
+        if (needle.length() == 0)
+            return 0;
+
+        for (int i = 0; i < haystack.length(); i++) {
+            if (i + needle.length() > haystack.length())
+                return -1;
+
+            int m = i;
+            for (int j = 0; j < needle.length(); j++) {
+                if (needle.charAt(j) == haystack.charAt(m)) {
+                    if (j == needle.length() - 1)
+                        return i;
+                    m++;
+                } else {
+                    break;
+                }
+
+            }
+        }
+        return -1;
+    }
+
 
 }
