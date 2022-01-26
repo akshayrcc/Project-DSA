@@ -5,21 +5,21 @@ public class LinkedListOps {
     /**
      * Delete a node in the middle when given ptr to the same node.
      */
-    public void deleteNode(ListNode node) {
+    public void deleteNode(SinglyLinkedListNode node) {
         node.val = node.next.val;
         node.next = node.next.next;
     }
 
-    public ListNode reverseList(ListNode head) {
+    public SinglyLinkedListNode reverseList(SinglyLinkedListNode head) {
         if (head == null || head.next == null)
             return head;
 
-        ListNode p1 = head;
-        ListNode p2 = p1.next;
+        SinglyLinkedListNode p1 = head;
+        SinglyLinkedListNode p2 = p1.next;
 
         head.next = null;
         while (p1 != null && p2 != null) {
-            ListNode t = p2.next;
+            SinglyLinkedListNode t = p2.next;
             p2.next = p1;
             p1 = p2;
             p2 = t;
