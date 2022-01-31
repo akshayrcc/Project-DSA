@@ -1,11 +1,10 @@
 package com.cybertron.leetcode;
 
-//import com.cybertron.plaindatastructures.ListNode;
+import com.cybertron.plaindatastructures.SinglyLinkedListNode;
 
 public class MergeKSortedLists {
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
 
 	}
 
@@ -61,7 +60,7 @@ public class MergeKSortedLists {
 //	}
 
 	// function to print the singly linked list
-	public static void printList(ListNode head) {
+	public static void printList(SinglyLinkedListNode head) {
 		while (head != null) {
 			System.out.print(head.val + " ");
 			head = head.next;
@@ -69,26 +68,10 @@ public class MergeKSortedLists {
 	}
 
 	// Utility function to create a new node
-	public ListNode push(int data) {
-		ListNode newNode = new ListNode(data);
+	public SinglyLinkedListNode push(int data) {
+		SinglyLinkedListNode newNode = new SinglyLinkedListNode(data);
 		newNode.next = null;
 		return newNode;
 	}
 }
 
-class ListNode {
-	int val;
-	ListNode next;
-
-	ListNode() {
-	}
-
-	ListNode(int val) {
-		this.val = val;
-	}
-
-	ListNode(int val, ListNode next) {
-		this.val = val;
-		this.next = next;
-	}
-}
