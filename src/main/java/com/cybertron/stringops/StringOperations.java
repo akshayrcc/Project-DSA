@@ -15,7 +15,9 @@ public class StringOperations {
 
         String firstUnique = "aadadaad";
         String firstUnique2 = "loveleetcode";
-        System.out.println("First Unique: " + firstUniqChar_1(firstUnique2));
+//        System.out.println("First Unique: " + firstUniqChar_1(firstUnique2));
+
+        System.out.println("Haystack test: " + strStr2("sadbutsad","sad"));
 
     }
 
@@ -137,15 +139,14 @@ public class StringOperations {
 
     public int strStr(String haystack, String needle) {
         if (haystack == null || needle == null)
-            return 0;
+            return -1;
 
         if (needle.length() == 0)
-            return 0;
+            return -1;
 
         for (int i = 0; i < haystack.length(); i++) {
             if (i + needle.length() > haystack.length())
                 return -1;
-
             int m = i;
             for (int j = 0; j < needle.length(); j++) {
                 if (needle.charAt(j) == haystack.charAt(m)) {
@@ -155,11 +156,32 @@ public class StringOperations {
                 } else {
                     break;
                 }
-
             }
         }
         return -1;
     }
 
+    public static int strStr2(String haystack, String needle) {
+        int retValue = -1;
+        int needleLen = needle.length();
+        int haystackLen = haystack.length();
+        for (int i = 0; i < haystackLen; i++) {
+            if(retValue != -1){
+                return i;
+            }
+            if (haystackLen - i > 0 && (haystackLen - i >= needle.length())) {
+                System.out.println(haystack.substring(i, i+ needleLen ));
+                if (haystack.substring(i, i+ needleLen).equals(needle)) {
+                    retValue = i;
+                    return retValue;
+                }
+            }
+        }
+        return retValue;
+    }
+
+    public static int strStr3(String haystack, String needle) {
+        return haystack.indexOf(needle);
+    }
 
 }
