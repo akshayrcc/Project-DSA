@@ -1,3 +1,5 @@
+package com.cybertron.hackerrank;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;

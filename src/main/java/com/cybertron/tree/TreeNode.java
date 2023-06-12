@@ -1,4 +1,4 @@
-package com.cybertron.algorithms.tree;
+package com.cybertron.tree;
 
 public class TreeNode {
     public int val;

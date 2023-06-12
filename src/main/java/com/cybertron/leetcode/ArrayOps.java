@@ -19,7 +19,7 @@ class ArrayOps {
                 m.put(val, m.get(val) - 1);
             }
         }
-        int ans[] = new int[k];
+        int[] ans = new int[k];
         ans = Arrays.copyOf(nums1,k);
         return ans;
     }

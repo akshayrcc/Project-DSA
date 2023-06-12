@@ -1,6 +1,6 @@
 package com.cybertron.leetcode;
 
-import com.cybertron.algorithms.tree.TreeNode;
+import com.cybertron.tree.TreeNode;
 
 import java.util.ArrayList;
 import java.util.LinkedList;
