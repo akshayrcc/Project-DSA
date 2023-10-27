@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class FizzBuzz {
-    /*public static void main(String[] args) {
+    public static void main(String[] args) {
         int number = 333;
         for (int i = 1; i <= number; i++) {
             if (i % 15 == 0) {
@@ -17,7 +17,7 @@ public class FizzBuzz {
                 System.out.println(i);
             }
         }
-    }*/
+    }
 
     /**
      * If number is divisible by 3, return "Fizz". If divisible by 5,
