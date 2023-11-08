@@ -1,6 +1,6 @@
 import java.util.*;
 
-class Solution {
+class BT1Solution {
     // TC : O(2^(m+n) // SC : O(m+n)
     List<List<Integer>> result;
 

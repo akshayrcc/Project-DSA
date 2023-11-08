@@ -1,4 +1,4 @@
-public class Solution {
+public class BitManipulation_1 {
     // TC: O(logn + logk) //SC: O(1)
     public int divide(int dividend, int divisor) {
         if (dividend == Integer.MIN_VALUE && divisor == -1) {

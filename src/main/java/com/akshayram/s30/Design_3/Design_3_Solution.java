@@ -1,9 +1,6 @@
-package com.akshayram.s30.Design
+package com.akshayram.s30.Design_3;
 
 import java.util.*;
-
-public class Solution {
-}
 
 // TC: O(1) SC: O(C).. where C is LRUCache capacity...
 class LRUCache {
@@ -141,7 +138,7 @@ class NestedInteger implements Iterator<Integer> {
             throw new NoSuchElementException();
         // hasNext ensures the stack top is now an integer. Pop and return
         // this integer.
-        return stack.removeFirst().getInteger();
+        return stack.removeFirst().next();
     }
 
     @Override
