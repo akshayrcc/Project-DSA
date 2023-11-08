@@ -3,7 +3,7 @@ import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 
-class Solution {
+class Graph_2 {
     // TC: O(n^2). SC: O(n)
     int[] colors;
 

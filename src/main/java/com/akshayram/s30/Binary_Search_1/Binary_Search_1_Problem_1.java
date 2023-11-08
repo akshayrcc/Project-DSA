@@ -1,3 +1,5 @@
+package com.akshayram.s30.Binary_Search_1;
+
 /***
  Problem 1: Search in a Rotated Sorted Array https://leetcode.com/problems/search-in-rotated-sorted-array/
  Time Complexity : O(n)
@@ -6,7 +8,7 @@
  Any problem you faced while coding this : No
  ***/
 
-public class Problem_1 {
+public class Binary_Search_1_Problem_1 {
     public int search(int[] arr, int target) {
 
         //null check

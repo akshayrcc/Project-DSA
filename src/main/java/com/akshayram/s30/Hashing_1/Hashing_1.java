@@ -1,9 +1,11 @@
+package com.akshayram.s30.Hashing_1;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class Solution {
+public class Hashing_1 {
 
     // TC: O(n*k) SC: O(n)
     public List<List<String>> groupAnagrams(String[] strs) {

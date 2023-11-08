@@ -1,31 +1,26 @@
+package com.akshayram.s30.Binary_Search_1;
 
-/***
- Problem 2: Search in Infinite sorted array: https://leetcode.com/problems/search-in-a-sorted-array-of-unknown-size/
- Time Complexity : O(n)
- Space Complexity : O(n)
- Did this code successfully run on Leetcode : Yes
- Any problem you faced while coding this : No
- ***/
-public class Problem_2 {
-    public int search(ArrayReader reader, int target) {
-        //null check
-        int low = 0, high = 1;
-        while (reader.get(high) < target) {
-            low = high;
-            high = 2 * high;
-        }
-        while (low <= high) {
-            int mid = low + (high - low) / 2;
-            if (reader.get(mid) == target) {
-                return mid;
-            } else if (reader.get(mid) > target) {
-                high = mid - 1;
-            } else {
-                low = mid + 1;
-            }
-        }
-        return -1;
-    }
+//TC: O(n) SC:O(n)
+public class Binary_Search_1_Problem_2 {
+//    public int search(ArrayReader reader, int target) {
+//        //null check
+//        int low = 0, high = 1;
+//        while (reader.get(high) < target) {
+//            low = high;
+//            high = 2 * high;
+//        }
+//        while (low <= high) {
+//            int mid = low + (high - low) / 2;
+//            if (reader.get(mid) == target) {
+//                return mid;
+//            } else if (reader.get(mid) > target) {
+//                high = mid - 1;
+//            } else {
+//                low = mid + 1;
+//            }
+//        }
+//        return -1;
+//    }
 }
 
 

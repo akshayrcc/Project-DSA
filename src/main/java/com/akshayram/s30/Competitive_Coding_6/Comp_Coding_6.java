@@ -1,4 +1,9 @@
-class Solution {
+package com.akshayram.s30.Competitive_Coding_6;
+
+import java.util.HashMap;
+import java.util.Map;
+
+class Comp_Coding_6 {
 
 //    Solution 1: beautiful-arrangement
 //    TC: O(k) where k is the number of valid combinations

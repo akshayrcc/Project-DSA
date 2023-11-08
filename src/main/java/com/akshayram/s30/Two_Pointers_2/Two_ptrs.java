@@ -1,4 +1,6 @@
-class Solution {
+package com.akshayram.s30.Two_Pointers_2;
+
+class Two_ptrs {
     // TC: O(n) // SC: O(1)
     public int removeDuplicates(int[] nums) {
         int s = 0;

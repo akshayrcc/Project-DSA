@@ -1,6 +1,8 @@
+package com.akshayram.s30.Greedy_4;
+
 import java.util.*;
 
-public class Solution {
+public class Greedy_4 {
     // TC: O(n). SC: O(1)
     public int minDominoRotations(int[] tops, int[] bottoms) {
         int re = check(tops, bottoms, tops[1]);

@@ -1,4 +1,4 @@
-//TC:each row n,n-1,n-2,..options to place queen so O(n!)
+package com.akshayram.s30.Backtracking_3;//TC:each row n,n-1,n-2,..options to place queen so O(n!)
 //SC: O(n^2) space of boolean board
 
 import java.util.*;

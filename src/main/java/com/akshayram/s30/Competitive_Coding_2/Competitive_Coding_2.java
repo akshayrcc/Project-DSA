@@ -1,7 +1,9 @@
+package com.akshayram.s30.Competitive_Coding_2;
+
 import java.util.HashMap;
 import java.util.Map;
 
-public class Solution {
+public class Competitive_Coding_2 {
     // TC: O(n * W) where n is the size of wt[] and W is the weight capacity
     // SC: O(n * W) as our dp[] size will be n * w
     // Function to return max value that can be put in knapsack of capacity W.

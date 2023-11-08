@@ -1,6 +1,6 @@
 import java.util.*;
 
-class Solution {
+class Hashing_2 {
     // TC: O(n) SC: O(n)
     public int subarraySum(int[] nums, int k) {
         if (nums == null || nums.length == 0)

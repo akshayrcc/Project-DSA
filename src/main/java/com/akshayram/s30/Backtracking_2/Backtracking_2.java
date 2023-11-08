@@ -1,6 +1,6 @@
 import java.util.*;
 
-class Solution {
+class Backtracking_2 {
     List<List<Integer>> result;
 
     // TC:O(2^m+n) //SC: O(h)

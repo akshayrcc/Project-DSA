@@ -1,6 +1,8 @@
+package com.akshayram.s30.Competitive_Coding_3;
+
 import java.util.*;
 
-class Solution {
+class Comp_Coding_3 {
 
     // TC: O(n) SC: O(n)
     public int findPairs(int[] nums, int k) {

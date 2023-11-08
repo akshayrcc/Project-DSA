@@ -1,3 +1,5 @@
+package com.akshayram.s30.BitManipulation_1;
+
 public class BitManipulation_1 {
     // TC: O(logn + logk) //SC: O(1)
     public int divide(int dividend, int divisor) {

@@ -1,6 +1,8 @@
+package com.akshayram.s30.Competitive_Coding_5;
+
 import java.util.HashMap;
 
-class Solution {
+class Comp_Coding_5 {
     int count = 0;
 
     // TC: O(valid permutations) // SC: O(visited nodes)

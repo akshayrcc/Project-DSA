@@ -1,3 +1,8 @@
+package com.akshayram.s30.Competitive_Coding_4;
+
+import com.akshayram.plaindatastructures.ListNode;
+import com.akshayram.tree.TreeNode;
+
 /**
  * Definition for a binary tree node.
  * public class TreeNode {
@@ -13,7 +18,7 @@
  *     }
  * }
  */
-class Solution {
+class Comp_Coding_4 {
 //    110. Balanced Binary Tree
 //    TC: O(n) SC: O(1)
     public boolean isBalanced_1(TreeNode root) {

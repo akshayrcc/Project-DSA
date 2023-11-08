@@ -1,4 +1,8 @@
-class Solution {
+package com.akshayram.s30.Greedy_1;
+
+import java.util.Arrays;
+
+class Greedy_1 {
 
 
     //TC: O(n). SC:O(n)

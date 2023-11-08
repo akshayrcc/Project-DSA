@@ -1,6 +1,11 @@
-// Did this code successfully run on Leetcode : Yes
+package com.akshayram.s30.Linked_List_2;// Did this code successfully run on Leetcode : Yes
 // Any problem you faced while coding this : No
 // Your code here along with comments explaining your approach
+
+import com.akshayram.plaindatastructures.ListNode;
+import com.akshayram.tree.TreeNode;
+
+import java.util.Stack;
 
 /**
  * Definition for singly-linked list.
@@ -12,12 +17,12 @@
  * ListNode(int val, ListNode next) { this.val = val; this.next = next; }
  * }
  */
-public class Solution {
+public class Linked_List_2 {
 
 // https://practice.geeksforgeeks.org/problems/delete-without-head-pointer/1
 // Time Complexity : O(1)
 // Space Complexity : O(1)
-    void deleteNode(Node del){
+    void deleteNode(ListNode del){
         del.data = del.next.data;
         del.next = del.next.next;
     }
