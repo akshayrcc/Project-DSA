@@ -24,7 +24,6 @@ public class Graph {
     Arrays.fill(costForNode, Integer.MAX_VALUE);
     costForNode[node1] = 0;
     pq.offer(Arrays.asList(0, node1));
-
     while (!pq.isEmpty()) {
       var curr = pq.poll();
       int currCost = curr.get(0);
@@ -47,7 +46,6 @@ public class Graph {
         }
       }
     }
-
     return -1;
   }
 

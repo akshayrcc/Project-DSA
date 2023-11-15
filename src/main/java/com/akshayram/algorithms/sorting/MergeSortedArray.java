@@ -27,7 +27,7 @@ public class MergeSortedArray {
     }
 
     public static void merge(int[] nums1, int m, int[] nums2, int n) {
-        //nums1 is the final merged sorted array.
+        //nums1 is the final merge sorted array.
         if (n == 0) {
             //return num1 as num2 has nothing to merge
             return;
