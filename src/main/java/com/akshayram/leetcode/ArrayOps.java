@@ -3,7 +3,6 @@ package com.akshayram.leetcode;
 import java.util.*;
 
 class ArrayOps {
-
   public int[] intersect(int[] nums1, int[] nums2) {
     if (nums1.length > nums2.length) {
       return intersect(nums2, nums1);
@@ -107,5 +106,86 @@ class ArrayOps {
 
     if (w1count != w2count) return false;
     return true;
+  }
+
+  public int countCharacters(String[] words, String chars) {
+    int sum = 0;
+    // create a freqMap for chars string
+    //    Map<Character, Integer> freqMap = new HashMap<>();
+    //    for (int i = 0; i < chars.length(); i++) {
+    //      if (freqMap.containsKey(chars.charAt(i))) {
+    //        freqMap.put(chars.charAt(i), freqMap.get(chars.charAt(i)) + 1);
+    //      } else {
+    //        freqMap.put(chars.charAt(i), 1);
+    //      }
+    //    }
+    boolean goodWord = false;
+    int[] freqArray = new int[26];
+    for (char ch : chars.toCharArray()) {
+      freqArray[ch - 'a']++;
+    }
+
+    for (String word : words) {
+      goodWord = true;
+      int[] wordFreqArray = new int[26];
+      for (char ch1 : word.toCharArray()) {
+        wordFreqArray[ch1 - 'a']++;
+        if (wordFreqArray[ch1 - 'a'] > freqArray[ch1 - 'a']) {
+          goodWord = false;
+          break;
+        }
+      }
+      if (goodWord) sum += word.length();
+    }
+    return sum;
+  }
+
+  // TC: O(n) SC:(1)
+  public static String largestGoodInteger(String num) {
+    char prev = ' ';
+    int sameCount = 1;
+    int maxGoodInt = -1;
+    for (char ch : num.toCharArray()) {
+      if (ch == prev) {
+        sameCount++;
+      } else {
+        sameCount = 1;
+      }
+      if (sameCount == 3) {
+        int val = Character.getNumericValue(ch);
+        if (val > maxGoodInt) {
+          maxGoodInt = val;
+        }
+        sameCount = 1;
+      }
+      prev = ch;
+    }
+    if (maxGoodInt != -1) {
+      return maxGoodInt + "" + maxGoodInt + "" + maxGoodInt;
+    }
+    return "";
+  }
+
+  // TC: O(log n) SC: O(1)
+  public static int numberOfMatches(int n) {
+    int totalMatches = 0;
+    while (n > 1) {
+      if (n % 2 == 0) { // even teams
+        totalMatches += (n / 2);
+        n = n / 2;
+      } else { // odd teams
+        totalMatches += (n - 1)/ 2;
+        n = ((n - 1) / 2) + 1;
+      }
+    }
+    return totalMatches;
+  }
+
+  public static void main(String[] args) {
+//    String num = "014455"; // "42352338";//"2300019";//"6777133339";
+//    String result = largestGoodInteger(num);
+//    System.out.println("Largest Good Integer: " + result);
+    int result = numberOfMatches(14);
+    System.out.println("Matches: " + result);
   }
 }
