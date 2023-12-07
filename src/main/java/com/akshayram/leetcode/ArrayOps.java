@@ -174,18 +174,51 @@ class ArrayOps {
         totalMatches += (n / 2);
         n = n / 2;
       } else { // odd teams
-        totalMatches += (n - 1)/ 2;
+        totalMatches += (n - 1) / 2;
         n = ((n - 1) / 2) + 1;
       }
     }
     return totalMatches;
   }
 
+  // TC: O(n) SC: O(1)
+  public static int totalMoney(int n) {
+    // first full week = 28
+    // every subsequent week adds 7 more.
+    // Hence, nth full week = firstFullWeek + (n-1) * 7
+    int fullWeeksCount = n / 7;
+    int daysRemaining = n % 7;
+    int money = 0;
+    for (int i = 1; i <= fullWeeksCount; i++) {
+      money += (28 + (i - 1) * 7);
+    }
+    int weekStartVal = fullWeeksCount + 1;
+    for (int j = 0; j < daysRemaining; j++) {
+      money += (weekStartVal + j);
+    }
+    return money;
+  }
+
+  //TC: O(n) SC: O(1)
+  public static String largestOddNumber(String num) {
+    String ans = "";
+    int n = num.length() - 1;
+    // skip all even nums from the last
+    while (n >= 0 && Integer.parseInt(String.valueOf(num.charAt(n))) % 2 == 0) {
+      n--;
+    }
+    // now n is point at odd num from the rear end
+    if (n >= 0) {
+      ans = num.substring(0, n+1);
+    }
+    return ans;
+  }
+
   public static void main(String[] args) {
-//    String num = "014455"; // "42352338";//"2300019";//"6777133339";
-//    String result = largestGoodInteger(num);
-//    System.out.println("Largest Good Integer: " + result);
-    int result = numberOfMatches(14);
-    System.out.println("Matches: " + result);
+    //    String num = "014455"; // "42352338";//"2300019";//"6777133339";
+    //    String result = largestGoodInteger(num);
+    //    System.out.println("Largest Good Integer: " + result);
+    String  result = largestOddNumber("52");
+    System.out.println("Result: " + result);
   }
 }
