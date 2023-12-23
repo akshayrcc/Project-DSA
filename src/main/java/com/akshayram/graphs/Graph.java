@@ -1,20 +1,20 @@
 package com.akshayram.graphs;
 
-import com.akshayram.missing.Pair;
+import com.akshayram.missing.PairCustom;
 
 import java.util.*;
 
 public class Graph {
-  List<List<Pair<Integer, Integer>>> adjList;
+  List<List<PairCustom<Integer, Integer>>> adjList;
 
   public Graph(int n, int[][] edges) {
     adjList = new ArrayList<>();
     for (int i = 0; i < n; i++) adjList.add(new ArrayList<>());
-    for (int[] e : edges) adjList.get(e[0]).add(new Pair<>(e[1], e[2]));
+    for (int[] e : edges) adjList.get(e[0]).add(new PairCustom<>(e[1], e[2]));
   }
 
   public void addEdge(int[] edge) {
-    adjList.get(edge[0]).add(new Pair<>(edge[1], edge[2]));
+    adjList.get(edge[0]).add(new PairCustom<>(edge[1], edge[2]));
   }
 
   public int shortestPath(int node1, int node2) {

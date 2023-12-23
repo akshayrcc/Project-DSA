@@ -1,11 +1,11 @@
 package com.akshayram.s30.Greedy_5;
 
-import com.akshayram.missing.Pair;
+import com.akshayram.missing.PairCustom;
 
 import java.util.*;
 
 class BikesInCampus {
-  List<List<Pair<Integer, Integer>>> workerToBikeList = new ArrayList<>();
+  List<List<PairCustom<Integer, Integer>>> workerToBikeList = new ArrayList<>();
   int closestBikeIndex[] = new int[1001];
 
   class WorkerBikePair {
@@ -39,7 +39,7 @@ class BikesInCampus {
   }
 
   void addClosestBikeToPq(PriorityQueue<WorkerBikePair> pq, int worker) {
-    Pair<Integer, Integer> closestBike = workerToBikeList.get(worker).get(closestBikeIndex[worker]);
+    PairCustom<Integer, Integer> closestBike = workerToBikeList.get(worker).get(closestBikeIndex[worker]);
     closestBikeIndex[worker]++;
 
     WorkerBikePair workerBikePair =
@@ -51,12 +51,12 @@ class BikesInCampus {
     PriorityQueue<WorkerBikePair> pq = new PriorityQueue<>(WorkerBikePairComparator);
 
     for (int worker = 0; worker < workers.length; worker++) {
-      List<Pair<Integer, Integer>> bikeList = new ArrayList<>();
+      List<PairCustom<Integer, Integer>> bikeList = new ArrayList<>();
       for (int bike = 0; bike < bikes.length; bike++) {
         int distance = findDistance(workers[worker], bikes[bike]);
-        bikeList.add(new Pair(distance, bike));
+        bikeList.add(new PairCustom(distance, bike));
       }
-      Collections.sort(bikeList, Comparator.comparing(Pair::getKey));
+      Collections.sort(bikeList, Comparator.comparing(PairCustom::getKey));
 
       workerToBikeList.add(bikeList);
 

@@ -8,7 +8,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Queue;
 
-import com.akshayram.missing.Pair;
+import com.akshayram.missing.PairCustom;
 //import javafx.util.Pair;
 //import com.akshayram.plaindatastructures.Pair;
 //import com.sun.tools.javac.util.Pair;
@@ -45,15 +45,15 @@ public class WordLadder {
 		});
 
 		// Queue for BFS
-		Queue<Pair<String, Integer>> Q = new LinkedList<>();
-		Q.add(new Pair(beginWord, 1));
+		Queue<PairCustom<String, Integer>> Q = new LinkedList<>();
+		Q.add(new PairCustom(beginWord, 1));
 
 		// Visited to make sure we don't repeat processing same word.
 		Map<String, Boolean> visited = new HashMap<>();
 		visited.put(beginWord, true);
 
 		while (!Q.isEmpty()) {
-			Pair<String, Integer> node = Q.remove();
+			PairCustom<String, Integer> node = Q.remove();
 			String word = node.getKey();
 			int level = node.getValue();
 			for (int i = 0; i < L; i++) {
@@ -71,7 +71,7 @@ public class WordLadder {
 					// Otherwise, add it to the BFS Queue. Also mark it visited
 					if (!visited.containsKey(adjacentWord)) {
 						visited.put(adjacentWord, true);
-						Q.add(new Pair(adjacentWord, level + 1));
+						Q.add(new PairCustom(adjacentWord, level + 1));
 					}
 				}
 			}

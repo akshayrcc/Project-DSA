@@ -199,7 +199,7 @@ class ArrayOps {
     return money;
   }
 
-  //TC: O(n) SC: O(1)
+  // TC: O(n) SC: O(1)
   public static String largestOddNumber(String num) {
     String ans = "";
     int n = num.length() - 1;
@@ -209,16 +209,131 @@ class ArrayOps {
     }
     // now n is point at odd num from the rear end
     if (n >= 0) {
-      ans = num.substring(0, n+1);
+      ans = num.substring(0, n + 1);
     }
     return ans;
+  }
+
+  // TC: O(1) SC: O(1)
+  public static int distMoney(int money, int children) {
+    if (money < children) {
+      return -1;
+    }
+    money -= children;
+    int eights = money / 7;
+    int remains = money % 7;
+    if (remains == 3 && eights == children - 1) return eights - 1;
+    if ((eights == children && remains != 0)) return eights - 1;
+    if (eights > children) return children - 1;
+    return eights;
+  }
+
+  public static int findSpecialInteger(int[] arr) {
+    int quarterPerCent = arr.length / 4;
+    int count = 1;
+    int prev = arr[0];
+    int curr = arr[0];
+    for (int i = 1; i < arr.length; i++) {
+      curr = arr[i];
+      if (prev == curr) {
+        count++;
+      } else {
+        // count reset to one for new element
+        count = 1;
+      }
+      prev = curr;
+      if (count > quarterPerCent) {
+        return curr;
+      }
+    }
+    return -1;
+  }
+
+  static int globalPos = 0;
+  static int globalSpeed = 0;
+  static int fleetCount = 0;
+
+  public static int carFleet(int target, int[] position, int[] speed) {
+    if (position.length != speed.length) return 0;
+    if (position.length == 1) return 1;
+    // insert in ascending order
+    TreeMap<Integer, Integer> sorted = new TreeMap<>();
+    for (int i = 0; i < position.length; i++) {
+      sorted.put(position[i], speed[i]);
+    }
+    int mapSize = sorted.size();
+    int count = 0;
+    int prevPos = 0;
+    int prevSpeed = 0;
+    boolean firstPass = true;
+    for (Map.Entry<Integer, Integer> entry : sorted.entrySet()) {
+      count++;
+      int currPos = entry.getKey();
+      int currSpeed = entry.getValue();
+      // check if current pair is in fleet
+      if (!firstPass) {
+        if (isInFleet(prevPos, prevSpeed, currPos, currSpeed, target)) {
+          prevPos = globalPos;
+          prevSpeed = globalSpeed;
+          if (count == mapSize) fleetCount++;
+        } else {
+          // current car is not in fleet with next one. Its the solo fleet
+          fleetCount++;
+          prevPos = currPos;
+          prevSpeed = currSpeed;
+        }
+      }
+      if (firstPass) {
+        prevPos = currPos;
+        prevSpeed = currSpeed;
+      }
+      firstPass = false;
+    }
+    return fleetCount;
+  }
+
+  static boolean isInFleet(int pos1, int speed1, int pos2, int speed2, int target) {
+    while (pos1 <= target && pos2 <= target) {
+      if (pos1 == pos2) {
+        globalPos = pos1;
+        globalSpeed = Math.min(speed1, speed2);
+        return true;
+      }
+      //      if(pos1 >= (pos2 + speed2)){
+      //        pos2 += speed2;
+      //      } else if(pos2 >= (pos1 + speed1)){
+      //        pos1 += speed1;
+      //      } else {
+      //        pos2 += speed2;
+      //        pos1 += speed1;
+      //      }
+      pos2 += speed2;
+      pos1 += speed1;
+    }
+    return false;
   }
 
   public static void main(String[] args) {
     //    String num = "014455"; // "42352338";//"2300019";//"6777133339";
     //    String result = largestGoodInteger(num);
     //    System.out.println("Largest Good Integer: " + result);
-    String  result = largestOddNumber("52");
+    //    int result = distMoney(20, 3);
+    //    int [] arr = new int[]{1,2,2,6,6,6,6,7,10};
+    //    int result = findSpecialInteger(arr);
+    //    int target = 12;
+    //    int [] pos = new int[]{10,8,0,5,3};
+    //    int [] speed = new int[]{2,4,1,1,3};
+//    int target = 10;
+//    int[] pos = new int[] {0, 4, 2};
+//    int[] speed = new int[] {2, 1, 3};
+        int target = 20;
+        int [] pos = new int[]{6,2,17};
+        int [] speed = new int[]{3,9,2};
+//    int target = 10;
+//    int [] pos = new int[]{8,3,7,4,6,5};
+//    int [] speed = new int[]{4,4,4,4,4,4};
+
+    int result = carFleet(target, pos, speed);
     System.out.println("Result: " + result);
   }
 }

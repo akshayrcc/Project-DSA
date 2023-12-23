@@ -34,7 +34,7 @@ import java.io.Serializable;
   * <p>A convenience class to represent name-value pairs.</p>
   * @since JavaFX 2.0
   */
-public class Pair<K,V> implements Serializable{
+public class PairCustom<K,V> implements Serializable{
 
     /**
      * Key of this <code>Pair</code>.
@@ -64,7 +64,7 @@ public class Pair<K,V> implements Serializable{
      * @param value The value to use for this pair
      */
     //public Pair(@NamedArg("key") K key, @NamedArg("value") V value) {
-    public Pair( K key,  V value) {
+    public PairCustom(K key, V value) {
         this.key = key;
         this.value = value;
     }
@@ -117,8 +117,8 @@ public class Pair<K,V> implements Serializable{
      @Override
      public boolean equals(Object o) {
          if (this == o) return true;
-         if (o instanceof Pair) {
-             Pair pair = (Pair) o;
+         if (o instanceof PairCustom) {
+             PairCustom pair = (PairCustom) o;
              if (key != null ? !key.equals(pair.key) : pair.key != null) return false;
              if (value != null ? !value.equals(pair.value) : pair.value != null) return false;
              return true;
