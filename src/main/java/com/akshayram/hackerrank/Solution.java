@@ -18,6 +18,8 @@ public class Solution {
         freqMap.put(unsorted[i], 1);
       }
     }
+    //shorthand for freqMap
+    //freqMap.put(unsorted[i], freqMap.getOrDefault(num, 0) + 1);
 
     List<Map.Entry<String, Integer>> list = new LinkedList<>(freqMap.entrySet());
 

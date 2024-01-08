@@ -313,6 +313,116 @@ class ArrayOps {
     return false;
   }
 
+  // TC: O(n) SC:O(n)
+  public static int minOperations(int[] nums) {
+    int n = nums.length;
+    Map<Integer, Integer> freqMap = new HashMap<>();
+    for (int num : nums) {
+      freqMap.put(num, freqMap.getOrDefault(num, 0) + 1);
+    }
+    int minOpsReq = 0;
+    for (Integer value : freqMap.values()) {
+      if (value == 1) {
+        return -1;
+      } else if (value % 3 == 0) {
+        minOpsReq += value / 3;
+      } else if (value % 3 == 1 || value % 3 == 2) {
+        minOpsReq += value / 3;
+        minOpsReq++;
+      } else if (value % 2 == 0) {
+        minOpsReq += value / 2;
+      } else {
+        return -1;
+      }
+    }
+    return minOpsReq;
+  }
+
+  public static int areaOfMaxDiagonal(int[][] dimensions) {
+    int n = dimensions.length;
+    if (n == 0) {
+      return 0;
+    }
+    if (n == 1) {
+      return dimensions[0][0] * dimensions[0][1];
+    }
+    double maxArea = 0;
+    double largestDiag = 0;
+    for (int i = 0; i < n; i++) {
+      int len = dimensions[i][0];
+      int wid = dimensions[i][1];
+      double diag = Math.sqrt((len * len) + (wid * wid));
+      if (diag > largestDiag) {
+        largestDiag = diag;
+        double currArea = len * wid;
+        maxArea = currArea;
+      } else if (diag == largestDiag) {
+        largestDiag = diag;
+        double currArea = len * wid;
+        maxArea = Math.max(maxArea, currArea);
+      }
+    }
+    return (int) maxArea;
+  }
+
+  public static int minMovesToCaptureTheQueen(int a, int b, int c, int d, int e, int f) {
+    int moves = 0;
+    // check if rook is inline with Queen
+    if (a == e || b == f) {
+      // check if no obstacle in way
+      if (b == d && d == f) { // all horizontal same
+        if ((a < c && c < e) || (a > c && c > e)) {
+          // obstacle present
+          return 2;
+        } else {
+          return 1;
+        }
+      }
+      if (a == c && c == e) { // all vertical same
+        if ((b < d && d < f) || (b > d && d > f)) {
+          // obstacle present
+          return 2;
+        } else {
+          return 1;
+        }
+      }
+      // all diff diag
+      return 1;
+    } else {
+      // rook is not in line
+      // to check if no obstacle in way
+      moves = 2;
+    }
+
+    // check if Bishop is inline with Queen
+    // check odd-even  black-white match first
+    // boolean blackBox = (c + d) % 2 == 1;
+    if ((c + d) % 2 == (e + f) % 2) { // allowed case
+      // check if one move possible
+      if (Math.abs(c - e) == Math.abs(d - f)) {
+        // check if no obstacle
+        if (((a + b) % 2 == (c + d) % 2)) { // if rook the same color
+          if (Math.abs(c - a) == Math.abs(d - b)) { // if rook on kill line
+            if (((c < a && a < e) || (d < b && b < f)) || ((c > a && a > e) || (d > b && b > f))) {
+              // obstacle present
+              // return 1;
+            } else {
+              return 1;
+            }
+          } else {
+            return 1;
+          }
+        } else {
+          return 1;
+        }
+      } else {
+        // if obstacle
+        moves = 2;
+      }
+    }
+    return moves;
+  }
+
   public static void main(String[] args) {
     //    String num = "014455"; // "42352338";//"2300019";//"6777133339";
     //    String result = largestGoodInteger(num);
@@ -323,17 +433,32 @@ class ArrayOps {
     //    int target = 12;
     //    int [] pos = new int[]{10,8,0,5,3};
     //    int [] speed = new int[]{2,4,1,1,3};
-//    int target = 10;
-//    int[] pos = new int[] {0, 4, 2};
-//    int[] speed = new int[] {2, 1, 3};
-        int target = 20;
-        int [] pos = new int[]{6,2,17};
-        int [] speed = new int[]{3,9,2};
-//    int target = 10;
-//    int [] pos = new int[]{8,3,7,4,6,5};
-//    int [] speed = new int[]{4,4,4,4,4,4};
+    //    int target = 10;
+    //    int[] pos = new int[] {0, 4, 2};
+    //    int[] speed = new int[] {2, 1, 3};
+    int target = 20;
+    int[] pos = new int[] {6, 2, 17};
+    int[] speed = new int[] {3, 9, 2};
+    //    int target = 10;
+    //    int [] pos = new int[]{8,3,7,4,6,5};
+    //    int [] speed = new int[]{4,4,4,4,4,4};
 
-    int result = carFleet(target, pos, speed);
+    //    int result = carFleet(target, pos, speed);
+
+    //    int[] nums = new int[] {2,3,3,2,2,4,2,3,4}; // 4
+    //    int[] nums =
+    //        new int[] {14, 12, 14, 14, 12, 14, 14, 12, 12, 12, 12, 14, 14, 12, 14, 14, 14, 12,
+    // 12}; //7
+    //    new int[] {13,7,13,7,13,7,13,13,7};
+
+    //    int result = minOperations(nums);
+
+    //    int[][] nums = new int[][]{
+    ////            {2,6},{5,1},{3,10},{8,4} // 30
+    //            {6,5},{8,6},{2,10},{8,1}, {9,2}, {3,5}, {3,5} // 20
+    //    };
+    int result = minMovesToCaptureTheQueen(2, 4, 2, 8, 8, 2);
+
     System.out.println("Result: " + result);
   }
 }
