@@ -12,6 +12,10 @@ public class TreeNode {
         this.val = val;
     }
 
+    TreeNode(String val) {
+        this.val = Integer.parseInt(val);
+    }
+
     TreeNode(int val, TreeNode left, TreeNode right) {
         this.val = val;
         this.left = left;
