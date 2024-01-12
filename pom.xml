@@ -9,7 +9,7 @@
         <version>2.4.0-SNAPSHOT</version>
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
-    <groupId>com.cybertron</groupId>
+    <groupId>com.akshayram</groupId>
     <artifactId>dsa</artifactId>
     <version>1.0.1-SNAPSHOT</version>
     <name>Project-DSA</name>

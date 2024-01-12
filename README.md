@@ -31,7 +31,7 @@ Feel free to explore and contribute to this project. You can add more data struc
     - The `test` directory includes test cases for your algorithms and programs.
     - Write and run tests to ensure your code behaves as expected.
 
-## Contributing
+## Contributing Guidelines
 
 Contributions to this DSA project are encouraged! Here's how you can get involved:
 
@@ -49,13 +49,16 @@ Contributions to this DSA project are encouraged! Here's how you can get involve
 4. **Issue Reporting**:
     - Report any issues, bugs, or suggestions through the project's issue tracker.
 
-## Get Started
+## Getting Started for Contribution
 
 1. Clone the project repository to your local machine.
-2. Choose a specific algorithm or data structure to work on.
-3. Implement the code in Java or Python.
-4. Add test cases to ensure the code's correctness.
-5. Submit a pull request with your changes.
+2. Open the project in your favorite code editor e.g. IntelliJ Idea or VS Code.
+3. We are using "Google Java Formatter" to maintain unique coding formatting style. Please maintain the same. (Tabs indents are two spaces).
+4. Choose a specific algorithm or data structure to work on.
+5. Implement the code in Java or Python.
+6. Add test cases to ensure the code's correctness.
+7. Submit a pull request with your changes.
+
 
 ## License
 

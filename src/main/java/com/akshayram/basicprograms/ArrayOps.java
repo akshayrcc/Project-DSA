@@ -1,4 +1,4 @@
-package com.akshayram.leetcode;
+package com.akshayram.basicprograms;
 
 import java.util.*;
 

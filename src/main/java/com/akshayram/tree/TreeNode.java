@@ -1,24 +1,23 @@
 package com.akshayram.tree;
 
 public class TreeNode {
-    public int val;
-    public TreeNode left;
-    public TreeNode right;
+  public int val;
+  public TreeNode left;
+  public TreeNode right;
 
-    TreeNode() {
-    }
+  TreeNode() {}
 
-    TreeNode(int val) {
-        this.val = val;
-    }
+  TreeNode(int val) {
+    this.val = val;
+  }
 
-    TreeNode(String val) {
-        this.val = Integer.parseInt(val);
-    }
+  TreeNode(String val) {
+    this.val = Integer.parseInt(val);
+  }
 
-    TreeNode(int val, TreeNode left, TreeNode right) {
-        this.val = val;
-        this.left = left;
-        this.right = right;
-    }
+  TreeNode(int val, TreeNode left, TreeNode right) {
+    this.val = val;
+    this.left = left;
+    this.right = right;
+  }
 }
