@@ -1,4 +1,4 @@
-package com.akshayram.java8;
+package com.akshayram.javafunctional;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -48,23 +48,14 @@ public class Solution1 {
 
 
 //        Using Steams
-        Map<String, Employee> result = Stream.concat(map1.entrySet().stream(), map2.entrySet().stream())
-                .collect(Collectors.toMap(
-                        Map.Entry::getKey,
-                        Map.Entry::getValue,
-                        (value1, value2) -> new Employee(value2.getId(), value1.getName())));
+        Map<String, Employee> result = Stream.concat(map1.entrySet().stream(), map2.entrySet().stream()).collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue, (value1, value2) -> new Employee(value2.getId(), value1.getName())));
 
         System.out.println("--------------------");
         System.out.println("Result Map we have:");
         result.forEach((key, value) -> System.out.println(key + " " + value.getName()));
 
 
-        Map<String, Employee> result2 = Stream.of(map1, map2)
-                .flatMap(map -> map.entrySet().stream())
-                .collect(Collectors.toMap(
-                        Map.Entry::getKey,
-                        Map.Entry::getValue,
-                        (v1, v2) -> new Employee(v1.getId(), v2.getName())));
+        Map<String, Employee> result2 = Stream.of(map1, map2).flatMap(map -> map.entrySet().stream()).collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue, (v1, v2) -> new Employee(v1.getId(), v2.getName())));
 
         System.out.println("--------------------");
         System.out.println("Result2 Map we have:");
@@ -72,13 +63,7 @@ public class Solution1 {
 
 
 //        Simple Streaming
-        Map<String, Employee> result3 = map2.entrySet()
-                .stream()
-                .collect(Collectors.toMap(
-                        Map.Entry::getKey,
-                        Map.Entry::getValue,
-                        (v1, v2) -> new Employee(v1.getId(), v2.getName()),
-                        () -> new HashMap<>(map1)));
+        Map<String, Employee> result3 = map2.entrySet().stream().collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue, (v1, v2) -> new Employee(v1.getId(), v2.getName()), () -> new HashMap<>(map1)));
 
     }
 

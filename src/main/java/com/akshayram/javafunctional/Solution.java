@@ -1,4 +1,4 @@
-package com.akshayram.java8;
+package com.akshayram.javafunctional;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -26,11 +26,11 @@ public class Solution {
                 return i;
             }
          }
-           
-        return n + 1;    
+
+        return n + 1;
 
     }
-	
+
 	public static int solution1(int[] A) {
 		// write your code in Java SE 8
 		// Arrays.sort(A);
@@ -38,13 +38,13 @@ public class Solution {
 		for (Integer integer : A) {
 			hset.add(integer);
 		}
-		
+
 		hset.forEach(val -> System.out.println(" "+ val));
-		
+
 		int size = A.length + 1;
 		System.out.println("size" + size);
-		
-		IntStream.range(1, size ).filter(val -> hset.contains(val) == false).forEach(System.out::println);
+
+		IntStream.range(1, size ).filter(val -> !hset.contains(val)).forEach(System.out::println);
 		//int a = IntStream.range(1, A.length).filter(val -> hset.contains(val) == false).min().getAsInt();
 		int a = (int)IntStream.range(1, A.length).filter(val -> hset.contains(val) == false).count();
 		System.out.println("a " + a);
@@ -53,8 +53,8 @@ public class Solution {
 		int b = IntStream.range(1, A.length).filter(val -> hset.contains(val) == false).min().getAsInt();
 		System.out.println("b " + b);
 		return 1;
-		
+
 	}
 
-	
+
 }

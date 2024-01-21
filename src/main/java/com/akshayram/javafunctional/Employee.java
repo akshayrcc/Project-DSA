@@ -1,5 +1,4 @@
-package com.akshayram.java8;
-
+package com.akshayram.javafunctional;
 
 public class Employee {
 
@@ -26,6 +25,4 @@ public class Employee {
     public void setName(String name) {
         this.name = name;
     }
-
-
 }
