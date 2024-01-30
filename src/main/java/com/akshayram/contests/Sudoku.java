@@ -39,7 +39,7 @@ public class Sudoku {
                     break;
                 }
             }
-            if (collision == false) candidates.add(c);
+            if (!collision) candidates.add(c);
         }
         return candidates;
     }
