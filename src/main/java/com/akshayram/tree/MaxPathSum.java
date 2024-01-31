@@ -1,11 +1,9 @@
 package com.akshayram.tree;
 
 public class MaxPathSum {
-
     int max = Integer.MIN_VALUE;
 
     public int maxPathSum(TreeNode root) {
-
         helper(root);
         return max;
     }

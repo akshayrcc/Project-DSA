@@ -1,11 +1,8 @@
 package com.akshayram.tree;
 
 public class SumRootToLeaf {
-
     int result;
-
     public int sumNumbers(TreeNode root) {
-
         sumofAllPaths(root, 0);
         return result;
     }

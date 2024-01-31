@@ -3,7 +3,6 @@ package com.akshayram.tree;
 import java.util.Stack;
 
 public class LeavesManipulation {
-
   static Stack<Integer> st = new Stack<>();
   static boolean isLeafValueSeq = true;
 
