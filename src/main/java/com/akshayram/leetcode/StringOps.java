@@ -52,12 +52,12 @@ public class StringOps {
         //0 to 7 indexes are the highest freq chars to be mapped on first clicks
         //checking 8 onwards to be mapped to 2nd and 3rd positions
         for (int i = 0; i <= 17; i++) {
-            while(counts[i] == 0){
+            while (counts[i] == 0) {
                 i++;
             }
-            if(i<=1){
+            if (i <= 1) {
                 position = 4;
-            } else if (i<=9) {
+            } else if (i <= 9) {
                 position = 3;
             } else {
                 position = 2;
@@ -68,14 +68,78 @@ public class StringOps {
         return pushes;
     }
 
+    public static int minimumTimeToInitialState(String word, int k) {
+        int n = word.length();
+        // Early return for short words
+        if (n <= k) return 1;
+        Map<String, Integer> hmap = new HashMap<>();
+
+        int subsPossible = n / k;
+        System.out.println("sub" + subsPossible);
+        int rounds = 0;
+        int curr = 0;
+        int tmpround = 0;
+        for (int t = 0; t < subsPossible; t++) {
+            tmpround++;
+            String str = word.substring(curr, curr + k);
+            hmap.put(str, tmpround);
+        }
+        String pc1 = word.substring(0, k);
+        int val = 0;
+        if (hmap.containsKey(pc1)) {
+            //found first key, lets check from here
+            val = hmap.get(pc1);
+        }
+        rounds = val;
+        for (int t = 0; t < subsPossible; t++) {
+            rounds++;
+            System.out.println("rounds" + rounds);
+            String pc = word.substring(0, k * rounds);
+            String remain = word.substring(k * rounds);
+            System.out.println("rem" + remain.length() + " " + pc.length());
+            String original = word.substring(0, remain.length());
+            if (original.equals(remain)) {
+                //this needs to be satisfied
+                break;
+            }
+            if (remain.length() < k) {
+                rounds++;
+                break;
+            }
+        }
+
+
+        return rounds;
+    }
+
+    public static int minimumTimeToInitialState2(String inputWord, int removalCount) {
+        int steps = 1;
+        String remainingWord = inputWord;
+        StringBuilder modifiedWord = new StringBuilder(inputWord.substring(0, inputWord.length() - removalCount));
+        remainingWord = inputWord.substring(removalCount);
+
+        while (remainingWord.length() > 0 && !remainingWord.equals(modifiedWord.toString())) {
+            steps++;
+            if (remainingWord.length() <= removalCount) {
+                return steps;
+            }
+            modifiedWord.delete(modifiedWord.length() - removalCount, modifiedWord.length());
+            remainingWord = remainingWord.substring(removalCount);
+        }
+
+        return steps;
+    }
+
     public static void main(String[] args) {
         System.out.println("MAIN EXEC...");
 //        String input = "NESWW"; // "NES";
 //        System.out.println("For input " + input + " " + isPathCrossing(input));
 
-        String input = "amrvxnhsewkoipjyuclgtdbfq";//"amrvxnhsewkoipjyuclgtdbfq"; // "NES";
-        System.out.println("For input " + input + " " + minimumPushes(input));
+//        String input = "amrvxnhsewkoipjyuclgtdbfq";//"amrvxnhsewkoipjyuclgtdbfq"; // "NES";
+//        System.out.println("For input " + input + " " + minimumPushes(input));
 
+        String input = "abcbabcd";
+        System.out.println("For input " + " output is " + minimumTimeToInitialState(input, 2));
 
     }
 }
