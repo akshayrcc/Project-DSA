@@ -130,6 +130,53 @@ public class StringOps {
         return steps;
     }
 
+    //TC: O(n) SC: O(1)
+    static int[] freqArray = new int[27];
+    static int[] firstIndex = new int[27];
+    static int[] firstView = new int[27];
+
+    public static int firstUniqChar(String s) {
+        Arrays.fill(firstView, -1);
+        Arrays.fill(firstIndex, -1);
+        int j = 0;
+        for (int i = 0; i < s.length(); i++) {
+            int val = s.charAt(i) - 'a';
+            freqArray[val] += 1;
+            if (firstIndex[val] < 0) {
+                firstIndex[val] = i;
+                firstView[j] = val;
+                j++;
+            }
+        }
+
+        for (int i = 0; i < 26; i++) {
+            if (firstView[i] == -1) {
+                break;
+            }
+            if (freqArray[firstView[i]] == 1) {
+                return firstIndex[firstView[i]];
+            }
+        }
+        return -1;
+    }
+
+
+    //TC: O(n) SC: O(1)
+    public int firstUniqChar2(String s) {
+        // Stores lowest index / first index
+        int ans = Integer.MAX_VALUE;
+        // Iterate from a to z which is 26 which makes it constant
+        for (char c = 'a'; c <= 'z'; c++) {
+            int index = s.indexOf(c);
+            if (index != -1 && index == s.lastIndexOf(c)) {
+                ans = Math.min(ans, index);
+            }
+        }
+
+        // If ans remain's Integer.MAX_VALUE then their is no unique character
+        return ans == Integer.MAX_VALUE ? -1 : ans;
+    }
+
     public static void main(String[] args) {
         System.out.println("MAIN EXEC...");
 //        String input = "NESWW"; // "NES";
@@ -138,8 +185,12 @@ public class StringOps {
 //        String input = "amrvxnhsewkoipjyuclgtdbfq";//"amrvxnhsewkoipjyuclgtdbfq"; // "NES";
 //        System.out.println("For input " + input + " " + minimumPushes(input));
 
-        String input = "abcbabcd";
-        System.out.println("For input " + " output is " + minimumTimeToInitialState(input, 2));
+//        String input = "abcbabcd";
+//        System.out.println("For input " + " output is " + minimumTimeToInitialState(input, 2));
+
+        System.out.println("For input " + " output is " + firstUniqChar("yekbsxznylrwamcaugrqrurvpqybkpfzwbqiysrdnrsnbftvrnszfjbkbmrctjizkjqoxqzddyfnavnhqeblfmzqgsjflghaulbadwqsyuetdelujphmlgtmkoaoijypvcajctbaumeromgejtewbwqptotrorephegyobbstvywljboeihdliknluqdpgampjyjpinxhhqexoctysfdciqjbzilnodzoihihusxluqoayenluziobxiodrfdkinkzzozmxfezfvllpdvogqqtquwcsijwachefspywdgsohqtlquhnoecccgbkrzqcprzmwvygqwddnehhi"));
+//        System.out.println("For input " + " output is " + firstUniqChar("leetcode"));
+
 
     }
 }
