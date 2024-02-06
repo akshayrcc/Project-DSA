@@ -177,6 +177,35 @@ public class StringOps {
         return ans == Integer.MAX_VALUE ? -1 : ans;
     }
 
+    //TC: O(n) SC: O(n)
+    public String findReplaceString(String s, int[] indices, String[] sources, String[] targets) {
+        Map<Integer, Integer> hmap = new HashMap<>();
+        int ptr = 0;
+        for (int ind : indices) {
+            String src = sources[ptr];
+            if (ind + src.length() <= s.length()) {
+                String check = s.substring(ind, ind + src.length());
+                if (src.equals(check)) {
+                    hmap.put(ind, ptr);
+                }
+            }
+            ptr++;
+        }
+        int n = s.length();
+        StringBuilder sb = new StringBuilder();
+        for (int i = 0; i < n; ) {
+            if (hmap.containsKey(i)) {
+                int temp = hmap.get(i);
+                sb.append(targets[temp]);
+                i = i + sources[temp].length();
+            } else {
+                sb.append(s.charAt(i));
+                i++;
+            }
+        }
+        return sb.toString();
+    }
+
     public static void main(String[] args) {
         System.out.println("MAIN EXEC...");
 //        String input = "NESWW"; // "NES";
