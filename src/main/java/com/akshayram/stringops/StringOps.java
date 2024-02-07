@@ -68,47 +68,83 @@ public class StringOps {
         return pushes;
     }
 
-    public static int minimumTimeToInitialState(String word, int k) {
-        int n = word.length();
-        // Early return for short words
-        if (n <= k) return 1;
-        Map<String, Integer> hmap = new HashMap<>();
+    //not working below
+//    public static int minimumTimeToInitialState(String word, int k) {
+//        int n = word.length();
+//        // Early return for short words
+//        if (n <= k) return 1;
+//
+//        Set<Integer> hset = new HashSet<>();
+//        int subsPossible = n / k;
+//        System.out.println("sub" + subsPossible);
+//
+//        int curr = 0;
+//        int tmpround = 0;
+//        String pc1 = word.substring(0, k);
+//        for (int t = 0; t < subsPossible; t++) {
+//            tmpround++;
+//            String str = word.substring(curr, curr + k);
+//            if (pc1.equals(str)) {
+//                hset.add(tmpround);
+//            }
+//            curr += k;
+//        }
+//        int rounds = 0;
+//        for (int i : hset) {
+//            rounds = i;
+//            for (int t = 0; t < subsPossible; t++) {
+//                rounds++;
+//                System.out.println("rounds" + rounds);
+//                String pc = word.substring(0, k * rounds);
+//                String remain = word.substring(k * rounds);
+//                System.out.println("rem" + remain.length() + " " + pc.length());
+//                String original = word.substring(0, remain.length());
+//                if (original.equals(remain)) {
+//                    //this needs to be satisfied
+//                    break;
+//                }
+//                if (remain.length() < k) {
+//                    rounds++;
+//                    break;
+//                }
+//            }
+//        }
+//        return rounds;
+//    }
 
+    //TC: O(n) SC: O(1)
+    public int minimumTimeToInitialState(String word, int k) {
+        int i = 0;
+        int t = 0;
+        int n = word.length();
+        while (true) {
+            i += k;
+            t++;
+            if (i >= n) {
+                return t;
+            }
+            if (word.startsWith(word.substring(i))) {
+                return t;
+            }
+        }
+    }
+
+    //TC: O(n*n) SC: O(n)
+    public int minimumTimeToInitialState1(String word, int k) {
+        int n = word.length();
+        if (n <= k) return 1;
         int subsPossible = n / k;
-        System.out.println("sub" + subsPossible);
         int rounds = 0;
-        int curr = 0;
-        int tmpround = 0;
-        for (int t = 0; t < subsPossible; t++) {
-            tmpround++;
-            String str = word.substring(curr, curr + k);
-            hmap.put(str, tmpround);
-        }
-        String pc1 = word.substring(0, k);
-        int val = 0;
-        if (hmap.containsKey(pc1)) {
-            //found first key, lets check from here
-            val = hmap.get(pc1);
-        }
-        rounds = val;
         for (int t = 0; t < subsPossible; t++) {
             rounds++;
-            System.out.println("rounds" + rounds);
-            String pc = word.substring(0, k * rounds);
             String remain = word.substring(k * rounds);
-            System.out.println("rem" + remain.length() + " " + pc.length());
             String original = word.substring(0, remain.length());
-            if (original.equals(remain)) {
-                //this needs to be satisfied
-                break;
-            }
+            if (original.equals(remain))    break;
             if (remain.length() < k) {
                 rounds++;
                 break;
             }
         }
-
-
         return rounds;
     }
 
@@ -117,8 +153,7 @@ public class StringOps {
         String remainingWord = inputWord;
         StringBuilder modifiedWord = new StringBuilder(inputWord.substring(0, inputWord.length() - removalCount));
         remainingWord = inputWord.substring(removalCount);
-
-        while (remainingWord.length() > 0 && !remainingWord.equals(modifiedWord.toString())) {
+        while (!remainingWord.isEmpty() && !remainingWord.contentEquals(modifiedWord)) {
             steps++;
             if (remainingWord.length() <= removalCount) {
                 return steps;
@@ -126,9 +161,9 @@ public class StringOps {
             modifiedWord.delete(modifiedWord.length() - removalCount, modifiedWord.length());
             remainingWord = remainingWord.substring(removalCount);
         }
-
         return steps;
     }
+
 
     //TC: O(n) SC: O(1)
     static int[] freqArray = new int[27];
@@ -214,10 +249,13 @@ public class StringOps {
 //        String input = "amrvxnhsewkoipjyuclgtdbfq";//"amrvxnhsewkoipjyuclgtdbfq"; // "NES";
 //        System.out.println("For input " + input + " " + minimumPushes(input));
 
-//        String input = "abcbabcd";
-//        System.out.println("For input " + " output is " + minimumTimeToInitialState(input, 2));
+        String word = "abcbabcd";
+        int k = 2; // Output: 4
+//        String word = "abacaba"; int k = 4; //Output: 1
+//        String word = "abacaba"; int k = 3; //Output: 2
+        System.out.println("For input " + " output is " + minimumTimeToInitialState(word, k));
 
-        System.out.println("For input " + " output is " + firstUniqChar("yekbsxznylrwamcaugrqrurvpqybkpfzwbqiysrdnrsnbftvrnszfjbkbmrctjizkjqoxqzddyfnavnhqeblfmzqgsjflghaulbadwqsyuetdelujphmlgtmkoaoijypvcajctbaumeromgejtewbwqptotrorephegyobbstvywljboeihdliknluqdpgampjyjpinxhhqexoctysfdciqjbzilnodzoihihusxluqoayenluziobxiodrfdkinkzzozmxfezfvllpdvogqqtquwcsijwachefspywdgsohqtlquhnoecccgbkrzqcprzmwvygqwddnehhi"));
+//        System.out.println("For input " + " output is " + firstUniqChar("yekbsxznylrwamcaugrqrurvpqybkpfzwbqiysrdnrsnbftvrnszfjbkbmrctjizkjqoxqzddyfnavnhqeblfmzqgsjflghaulbadwqsyuetdelujphmlgtmkoaoijypvcajctbaumeromgejtewbwqptotrorephegyobbstvywljboeihdliknluqdpgampjyjpinxhhqexoctysfdciqjbzilnodzoihihusxluqoayenluziobxiodrfdkinkzzozmxfezfvllpdvogqqtquwcsijwachefspywdgsohqtlquhnoecccgbkrzqcprzmwvygqwddnehhi"));
 //        System.out.println("For input " + " output is " + firstUniqChar("leetcode"));
 
 

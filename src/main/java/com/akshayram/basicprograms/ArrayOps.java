@@ -524,19 +524,19 @@ class ArrayOps {
 
         for (int i = 1; i < n; i++) {
             mapIndex.put(Math.abs(nums[i]), i);
-            prefixSum[i] = prefixSum[i-1] + nums[i];
+            prefixSum[i] = prefixSum[i - 1] + nums[i];
         }
 
-        for (int i = 0; i < n-1; i++) {
+        for (int i = 0; i < n - 1; i++) {
             int index = -1;
             int target = k + Math.abs(nums[i]);
-            if(mapIndex.containsKey(target)){
+            if (mapIndex.containsKey(target)) {
                 index = mapIndex.get(target);
             }
             long sum;
-            if(index != -1){
-                if(i!=0){
-                    sum = prefixSum[index] - prefixSum[i-1];
+            if (index != -1) {
+                if (i != 0) {
+                    sum = prefixSum[index] - prefixSum[i - 1];
                 } else {
                     sum = prefixSum[index];
                 }
@@ -557,7 +557,7 @@ class ArrayOps {
 //            maxSum = Math.max(maxSum, sum);
 
         }
-        if(maxSum == Integer.MIN_VALUE) maxSum=0;
+        if (maxSum == Integer.MIN_VALUE) maxSum = 0;
         return maxSum;
     }
 
@@ -599,7 +599,7 @@ class ArrayOps {
 //        int result = maximumLength(new int[]{48841, 358801, 28561, 18974736, 4356, 221, 358801, 599, 13, 4356, 66, 48841, 28561, 815730721, 13, 815730721, 18974736, 66, 169, 599, 169, 221}); // 7
 //        long result = flowerGame(7, 4);
 //        System.out.println("Result: " + result);
-        long result = maximumSubarraySum(new int[]{-1,-2,-3,-4}, 2); //[1,2,3,4,5,6], k = 1
+        long result = maximumSubarraySum(new int[]{-1, -2, -3, -4}, 2); //[1,2,3,4,5,6], k = 1
         System.out.println("Result: " + result);
     }
 }

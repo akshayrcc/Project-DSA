@@ -9,7 +9,6 @@ public class Traversals {
         root.left = new TreeNode(2);
         root.right = new TreeNode(3);
         root.left.left = new TreeNode(4);
-
         System.out.println("BFS traversal: ");
         bfs(root);
         System.out.println("\nDFS pre-order traversal: ");
