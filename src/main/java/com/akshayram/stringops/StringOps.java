@@ -139,7 +139,7 @@ public class StringOps {
             rounds++;
             String remain = word.substring(k * rounds);
             String original = word.substring(0, remain.length());
-            if (original.equals(remain))    break;
+            if (original.equals(remain)) break;
             if (remain.length() < k) {
                 rounds++;
                 break;
@@ -241,6 +241,70 @@ public class StringOps {
         return sb.toString();
     }
 
+    public static int countMatchingSubarrays(int[] nums, int[] pattern) {
+        int n = nums.length;
+        int count = 0;
+
+        StringBuilder sb = new StringBuilder();
+        for (int p : pattern) {
+            sb.append(p);
+        }
+        String patt = sb.toString();
+
+        String firstP = String.valueOf(pattern[0]);
+
+//        Set<Integer> takeChance = new HashSet<>();
+
+        StringBuilder sb2 = new StringBuilder();
+        for (int i = 0; i < n - 1; i++) {
+            int diff_val = nums[i + 1] - nums[i];
+            String val;
+            if (diff_val > 0) {
+                val = "1";
+            } else if (diff_val < 0) {
+                val = "-1";
+            } else {
+                val = "0";
+            }
+            sb2.append(val);
+
+//            if(firstP.equals(val))  takeChance.add(i);
+        }
+
+        String str = sb2.toString();
+        int n2 = str.length();
+        int p = patt.length();
+        for (int i = 0; i <= n2-p ; i++) {
+//            if(!takeChance.contains(i)) continue;
+            if(str.charAt(i) != patt.charAt(0)) continue;
+            if(i != 0 && str.charAt(i-1) == '-')    continue;
+
+            String subStr = str.substring(i, i + p);
+            if (subStr.equals(patt)) count++;
+        }
+        return count;
+
+
+        // Sliding window with early mismatches and two-pointer approach
+        // int left = 0;
+        // for (int right = 0; right < n - m - 1; right++) {
+        //     // right = left;
+        //     int p = pattern[right];
+        //     int diff = diffs[right];
+        //     if ((p == 1 && diff <= 0) || (p == -1 && diff >= 0) || (p == 0 && diff != 0)) {
+        //         // Mismatch, move the left pointer to the right of the last invalid subarray
+        //         left = right + 1;
+        //     } else {
+        //         // Potential match, check only the last element if a full subarray is formed
+        //         if (right >= m - 1) {
+        //             count++;
+        //         }
+        //     }
+        // }
+
+//        return count;
+    }
+
     public static void main(String[] args) {
         System.out.println("MAIN EXEC...");
 //        String input = "NESWW"; // "NES";
@@ -253,7 +317,11 @@ public class StringOps {
         int k = 2; // Output: 4
 //        String word = "abacaba"; int k = 4; //Output: 1
 //        String word = "abacaba"; int k = 3; //Output: 2
-        System.out.println("For input " + " output is " + minimumTimeToInitialState(word, k));
+//        System.out.println("For input " + " output is " + minimumTimeToInitialState(word, k));
+
+
+//        System.out.println("For input " + " output is " + countMatchingSubarrays(new int[]{1,2,3,4,5,6}, new int[]{1,1}));
+        System.out.println("For input " + " output is " + countMatchingSubarrays(new int[]{1,4,4,1,3,5,5,3}, new int[]{1,0,-1}));
 
 //        System.out.println("For input " + " output is " + firstUniqChar("yekbsxznylrwamcaugrqrurvpqybkpfzwbqiysrdnrsnbftvrnszfjbkbmrctjizkjqoxqzddyfnavnhqeblfmzqgsjflghaulbadwqsyuetdelujphmlgtmkoaoijypvcajctbaumeromgejtewbwqptotrorephegyobbstvywljboeihdliknluqdpgampjyjpinxhhqexoctysfdciqjbzilnodzoihihusxluqoayenluziobxiodrfdkinkzzozmxfezfvllpdvogqqtquwcsijwachefspywdgsohqtlquhnoecccgbkrzqcprzmwvygqwddnehhi"));
 //        System.out.println("For input " + " output is " + firstUniqChar("leetcode"));
