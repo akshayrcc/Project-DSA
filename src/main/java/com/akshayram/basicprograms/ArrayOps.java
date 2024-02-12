@@ -561,6 +561,24 @@ class ArrayOps {
         return maxSum;
     }
 
+    public static int majorityElement(int[] nums) {
+        int n = nums.length;
+        int count = 0;
+        int currentWinner = 0;
+        for(int i=0;i<n;i++){
+            int curr = nums[i];
+            if(count == 0){
+                currentWinner = curr;
+            }
+            if(curr == currentWinner){
+                count++;
+            } else {
+                count--;
+            }
+        }
+        return currentWinner;
+    }
+
     public static void main(String[] args) {
         //    String num = "014455"; // "42352338";//"2300019";//"6777133339";
         //    String result = largestGoodInteger(num);
@@ -599,7 +617,8 @@ class ArrayOps {
 //        int result = maximumLength(new int[]{48841, 358801, 28561, 18974736, 4356, 221, 358801, 599, 13, 4356, 66, 48841, 28561, 815730721, 13, 815730721, 18974736, 66, 169, 599, 169, 221}); // 7
 //        long result = flowerGame(7, 4);
 //        System.out.println("Result: " + result);
-        long result = maximumSubarraySum(new int[]{-1, -2, -3, -4}, 2); //[1,2,3,4,5,6], k = 1
+//        long result = maximumSubarraySum(new int[]{-1, -2, -3, -4}, 2); //[1,2,3,4,5,6], k = 1
+        long result = majorityElement(new int[]{1,1,1,3,3,2,2,2,1,1,1,1}); //[1,2,3,4,5,6], k = 1
         System.out.println("Result: " + result);
     }
 }
