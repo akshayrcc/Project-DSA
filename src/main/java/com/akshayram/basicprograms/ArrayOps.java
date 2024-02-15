@@ -579,6 +579,26 @@ class ArrayOps {
         return currentWinner;
     }
 
+    public static boolean isValid(String s) {
+        Map<Character, Character> hmap = new HashMap<>();
+        hmap.put('(',')');
+        hmap.put('{','}');
+        hmap.put('[',']');
+        Stack<Character> st = new Stack<>();
+        for(Character ch: s.toCharArray()){
+            if(hmap.keySet().contains(ch)){ //isKey
+                st.push(ch);
+                System.out.println(st);
+            } else {
+                if(st.isEmpty()) return false;
+                Character counter = hmap.get(st.pop());
+
+                if(counter!= ch) return false;
+            }
+        }
+        return st.isEmpty();
+    }
+
     public static void main(String[] args) {
         //    String num = "014455"; // "42352338";//"2300019";//"6777133339";
         //    String result = largestGoodInteger(num);
@@ -618,7 +638,8 @@ class ArrayOps {
 //        long result = flowerGame(7, 4);
 //        System.out.println("Result: " + result);
 //        long result = maximumSubarraySum(new int[]{-1, -2, -3, -4}, 2); //[1,2,3,4,5,6], k = 1
-        long result = majorityElement(new int[]{1,1,1,3,3,2,2,2,1,1,1,1}); //[1,2,3,4,5,6], k = 1
+//        long result = majorityElement(new int[]{1,1,1,3,3,2,2,2,1,1,1,1}); //[1,2,3,4,5,6], k = 1
+        boolean result = isValid("["); //[1,2,3,4,5,6], k = 1
         System.out.println("Result: " + result);
     }
 }
