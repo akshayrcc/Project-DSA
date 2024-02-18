@@ -1,3 +1,4 @@
 package com.akshayram.graphs;
 
-public class ShortestPathDijkstras2 {}
+public class ShortestPathDijkstras2 {
+}

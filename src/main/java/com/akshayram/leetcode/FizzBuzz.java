@@ -5,33 +5,33 @@ import java.util.List;
 
 public class FizzBuzz {
     public static void main(String[] args) {
-//        int number = 333;
-//        for (int i = 1; i <= number; i++) {
-//            if (i % 15 == 0) {
-//                System.out.println("FizzBuzz");
-//            } else if (i % 3 == 0) {
-//                System.out.println("Fizz");
-//            } else if (i % 5 == 0) {
-//                System.out.println("Buzz");
-//            } else {
-//                System.out.println(i);
-//            }
-//        }
-
-        int limit = 333; // Change this for different limit
-        for (int i = 1; i <= limit; i++) {
-            String output = switch (i) {
-                case i % 15 == 0:
-                    yield "FizzBuzz";
-                case i % 3 == 0:
-                    yield "Fizz";
-                case i % 5 == 0:
-                    yield "Buzz";
-                default:
-                    yield String.valueOf(i);
-            };
-            System.out.println(output);
+        int number = 333;
+        for (int i = 1; i <= number; i++) {
+            if (i % 15 == 0) {
+                System.out.println("FizzBuzz");
+            } else if (i % 3 == 0) {
+                System.out.println("Fizz");
+            } else if (i % 5 == 0) {
+                System.out.println("Buzz");
+            } else {
+                System.out.println(i);
+            }
         }
+
+//        int limit = 333; // Change this for different limit
+//        for (int i = 1; i <= limit; i++) {
+//            String output = switch (i) {
+//                case i % 15 == 0:
+//                    yield "FizzBuzz";
+//                case i % 3 == 0:
+//                    yield "Fizz";
+//                case i % 5 == 0:
+//                    yield "Buzz";
+//                default:
+//                    yield String.valueOf(i);
+//            };
+//            System.out.println(output);
+//        }
 //        for (int i = 1; i <= limit; i++) {
 //            switch ((i % 3,i % 5)){
 //                case (0, 0) ->System.out.println("FizzBuzz");

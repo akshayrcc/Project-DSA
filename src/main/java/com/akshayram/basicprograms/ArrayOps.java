@@ -565,12 +565,12 @@ class ArrayOps {
         int n = nums.length;
         int count = 0;
         int currentWinner = 0;
-        for(int i=0;i<n;i++){
+        for (int i = 0; i < n; i++) {
             int curr = nums[i];
-            if(count == 0){
+            if (count == 0) {
                 currentWinner = curr;
             }
-            if(curr == currentWinner){
+            if (curr == currentWinner) {
                 count++;
             } else {
                 count--;
@@ -581,22 +581,43 @@ class ArrayOps {
 
     public static boolean isValid(String s) {
         Map<Character, Character> hmap = new HashMap<>();
-        hmap.put('(',')');
-        hmap.put('{','}');
-        hmap.put('[',']');
+        hmap.put('(', ')');
+        hmap.put('{', '}');
+        hmap.put('[', ']');
         Stack<Character> st = new Stack<>();
-        for(Character ch: s.toCharArray()){
-            if(hmap.keySet().contains(ch)){ //isKey
+        for (Character ch : s.toCharArray()) {
+            if (hmap.keySet().contains(ch)) { //isKey
                 st.push(ch);
                 System.out.println(st);
             } else {
-                if(st.isEmpty()) return false;
+                if (st.isEmpty()) return false;
                 Character counter = hmap.get(st.pop());
 
-                if(counter!= ch) return false;
+                if (counter != ch) return false;
             }
         }
         return st.isEmpty();
+    }
+
+    public int findLeastNumOfUniqueInts(int[] arr, int k) {
+        int ans = 0;
+        int n = arr.length;
+        Map<Integer, Integer> freqMap = new HashMap<>();
+        for (int j : arr) {
+            freqMap.put(j, freqMap.getOrDefault(j, 0) + 1);
+        }
+        List<Integer> list = new ArrayList<>(freqMap.values());
+        Collections.sort(list);
+        for (int i = 0; i < list.size(); i++) {
+            if (k > 0) {
+                k = k - list.get(i);
+            } else if (k < 0) {
+                ans = ans - k;
+            } else {
+                ans++;
+            }
+        }
+        return ans;
     }
 
     public static void main(String[] args) {
