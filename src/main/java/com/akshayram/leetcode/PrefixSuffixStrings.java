@@ -1,5 +1,8 @@
 package com.akshayram.leetcode;
 
+import com.akshayram.util.CountMapInt;
+import com.akshayram.util.SubHashMulti;
+
 import java.util.*;
 
 
@@ -14,7 +17,7 @@ public class PrefixSuffixStrings {
         private int count;
     }
 
-    public int countPrefixSuffixPairs(String[] words) {
+    public int countPrefixSuffixPairsOptimized(String[] words) {
         Node root = new Node();
         int count = 0;
         for (String word : words) {
@@ -29,7 +32,7 @@ public class PrefixSuffixStrings {
     }
 
 
-    public int countPrefixSuffixPairs2(String[] words) {
+    public int countPrefixSuffixPairs(String[] words) {
         int count = 0;
         for (int i = 0; i < words.length; i++) {
             for (int j = i + 1; j < words.length; j++) {
@@ -149,5 +152,29 @@ public class PrefixSuffixStrings {
         }
         // prefixSetstr1.substring(2,cnt)
         return cnt;
+    }
+
+    private static long key(long[] hash) {
+        return (hash[0] << 32) | hash[1];
+    }
+
+    public long countPrefixSuffixPairs2(String[] words) {
+        CountMapInt<Long> cm = new CountMapInt<>();
+
+        long ans = 0;
+        for (String w : words) {
+            int K = w.length();
+
+            SubHashMulti sh = new SubHashMulti(w);
+            for (int i = 1; i <= K; ++i) {
+                long pre = key(sh.sub(0, i));
+                long suf = key(sh.sub(K - i, K));
+                if (pre == suf) {
+                    ans += cm.getCount(pre);
+                }
+            }
+            cm.increment(key(sh.sub(0, K)), 1);
+        }
+        return ans;
     }
 }
