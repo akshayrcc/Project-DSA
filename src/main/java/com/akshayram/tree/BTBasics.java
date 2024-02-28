@@ -39,4 +39,23 @@ public class BTBasics {
         if (p.val != q.val) return false;
         return isSameTree(p.right, q.right) && isSameTree(p.left, q.left);
     }
+
+    int diameter;
+
+    //TC: O(n) SC: O(h)
+    public int diameterOfBinaryTree(TreeNode root) {
+        diameter = 0;
+        helper(root);
+        return diameter;
+    }
+
+    private int helper(TreeNode root) {
+        if (root == null) {
+            return 0;
+        }
+        int left = helper(root.left);
+        int right = helper(root.right);
+        diameter = Math.max(diameter, left + right);
+        return Math.max(left, right) + 1;
+    }
 }
