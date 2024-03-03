@@ -620,6 +620,65 @@ class ArrayOps {
         return ans;
     }
 
+    public int[] resultArray2(int[] nums) {
+        int N = nums.length;
+        if (N <= 2) return nums;
+        int[] result = new int[N];
+
+        int first = nums[0];
+        int second = nums[1];
+
+        List<Integer> arrlist1 = new ArrayList<>();
+        List<Integer> arrlist2 = new ArrayList<>();
+        arrlist1.add(first);
+        arrlist2.add(second);
+
+        for (int i = 2; i < N; i++) {
+            if (greaterCount(arrlist1, nums[i]) > greaterCount(arrlist2, nums[i])) {
+                arrlist1.add(nums[i]);
+                System.out.println(" first1 " + nums[i]);
+            } else if (greaterCount(arrlist1, nums[i]) < greaterCount(arrlist2, nums[i])) {
+                arrlist2.add(nums[i]);
+                System.out.println(" sec1 " + nums[i]);
+            } else if (greaterCount(arrlist1, nums[i]) == greaterCount(arrlist2, nums[i])) {
+                if (arrlist1.size() < arrlist2.size()) {
+                    arrlist1.add(nums[i]);
+                    System.out.println(" first2 " + nums[i]);
+                } else {
+                    arrlist2.add(nums[i]);
+                    System.out.println(" sec2 " + nums[i]);
+                }
+            } else {
+                arrlist1.add(nums[i]);
+                System.out.println(" first3 " + nums[i]);
+            }
+        }
+
+        int ptr = 0;
+        for (int j = 0; j < arrlist1.size(); j++) {
+            result[ptr] = arrlist1.get(j);
+            System.out.println(" al1 " + arrlist1.get(j));
+            ptr++;
+        }
+        for (int k = 0; k < arrlist2.size(); k++) {
+            result[ptr] = arrlist2.get(k);
+            System.out.println(" al2 " + arrlist2.get(k));
+            ptr++;
+        }
+
+        return result;
+    }
+
+    int greaterCount(List<Integer> arr, int val) {
+        int count = 0;
+        for (int num : arr) {
+            if (num > val) {
+                count++;
+            }
+        }
+        return count;
+    }
+
     public static void main(String[] args) {
         //    String num = "014455"; // "42352338";//"2300019";//"6777133339";
         //    String result = largestGoodInteger(num);

@@ -1,4 +1,4 @@
-package com.akshayram.contests;
+package com.akshayram.matrix;
 
 import java.util.*;
 
