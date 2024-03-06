@@ -1,4 +1,4 @@
-package com.akshayram.plaindatastructures;
+package com.akshayram.datastructures;
 
 import java.util.AbstractMap;
 import java.util.Map;

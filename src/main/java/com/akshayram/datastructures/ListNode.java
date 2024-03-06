@@ -1,4 +1,4 @@
-package com.akshayram.plaindatastructures;
+package com.akshayram.datastructures;
 
 /*Definition for singly-linked list.*/
 public class ListNode {

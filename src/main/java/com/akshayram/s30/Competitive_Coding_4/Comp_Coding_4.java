@@ -1,6 +1,6 @@
 package com.akshayram.s30.Competitive_Coding_4;
 
-import com.akshayram.plaindatastructures.ListNode;
+import com.akshayram.datastructures.ListNode;
 import com.akshayram.tree.TreeNode;
 
 /**

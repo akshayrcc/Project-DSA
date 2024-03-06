@@ -1,6 +1,6 @@
 package com.akshayram.s30.Linked_List_1;
 
-import com.akshayram.plaindatastructures.ListNode;
+import com.akshayram.datastructures.ListNode;
 
 /**
  * Definition for singly-linked list. public class ListNode { int val; ListNode next; ListNode() {}

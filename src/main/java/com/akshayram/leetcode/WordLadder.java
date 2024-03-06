@@ -10,7 +10,7 @@ import java.util.Queue;
 
 import com.akshayram.missing.PairCustom;
 //import javafx.util.Pair;
-//import com.akshayram.plaindatastructures.Pair;
+//import com.akshayram.datastructures.Pair;
 //import com.sun.tools.javac.util.Pair;
 
 public class WordLadder {

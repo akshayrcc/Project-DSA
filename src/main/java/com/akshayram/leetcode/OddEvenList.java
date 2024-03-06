@@ -1,6 +1,6 @@
 package com.akshayram.leetcode;
 
-import com.akshayram.plaindatastructures.ListNode;
+import com.akshayram.datastructures.ListNode;
 
 public class OddEvenList {
     public ListNode oddEvenList(ListNode head) {

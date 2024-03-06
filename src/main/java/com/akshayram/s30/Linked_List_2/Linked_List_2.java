@@ -2,7 +2,7 @@ package com.akshayram.s30.Linked_List_2;// Did this code successfully run on Lee
 // Any problem you faced while coding this : No
 // Your code here along with comments explaining your approach
 
-import com.akshayram.plaindatastructures.ListNode;
+import com.akshayram.datastructures.ListNode;
 import com.akshayram.tree.TreeNode;
 
 import java.util.Stack;

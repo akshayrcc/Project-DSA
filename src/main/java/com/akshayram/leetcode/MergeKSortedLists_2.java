@@ -1,6 +1,6 @@
 package com.akshayram.leetcode;
 
-import com.akshayram.plaindatastructures.SinglyLinkedListNode;
+import com.akshayram.datastructures.SinglyLinkedListNode;
 
 import java.util.Arrays;
 import java.util.Comparator;

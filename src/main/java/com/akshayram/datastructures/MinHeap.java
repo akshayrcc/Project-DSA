@@ -1,4 +1,4 @@
-package com.akshayram.plaindatastructures;
+package com.akshayram.datastructures;
 
 public class MinHeap {
     private int[] heap;

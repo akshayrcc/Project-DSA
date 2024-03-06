@@ -6,32 +6,32 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ProxyInClassroom {
-	public static void main(String args[]) throws Exception {
+    public static void main(String[] args) throws Exception {
 
-		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-		int n = Integer.parseInt(br.readLine());
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        int n = Integer.parseInt(br.readLine());
 
-		List<Integer> all = new ArrayList<>();
-		for (int i = 1; i <= n; i++) {
-			all.add(i);
-		}
-		
-		List<Integer> input = new ArrayList<>();
+        List<Integer> all = new ArrayList<>();
+        for (int i = 1; i <= n; i++) {
+            all.add(i);
+        }
 
-		String lines = br.readLine();
-		String[] present = lines.trim().split("\\s+");
+        List<Integer> input = new ArrayList<>();
 
-		for (int i = 0; i < present.length; i++) {
-			input.add(Integer.parseInt(present[i]));
-		}
-		for (int i = 0; i < all.size(); i++) {
-			if (!input.contains(all.get(i))) {
-				System.out.print(all.get(i));
+        String lines = br.readLine();
+        String[] present = lines.trim().split("\\s+");
 
-				if (i != all.size() - 1) {
-					System.out.print(" ");
-				}
-			}
-		}
-	}
+        for (int i = 0; i < present.length; i++) {
+            input.add(Integer.parseInt(present[i]));
+        }
+        for (int i = 0; i < all.size(); i++) {
+            if (!input.contains(all.get(i))) {
+                System.out.print(all.get(i));
+
+                if (i != all.size() - 1) {
+                    System.out.print(" ");
+                }
+            }
+        }
+    }
 }
