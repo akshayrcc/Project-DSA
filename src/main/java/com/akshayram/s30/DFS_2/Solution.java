@@ -1,4 +1,4 @@
-package com.akshayram.s30.DFS_1;
+package com.akshayram.s30.DFS_2;
 
 import java.util.Stack;
 
@@ -64,7 +64,7 @@ class DecodeString {
         m = grid.length;
         n = grid[0].length;
         int count = 0;
-        this.dirs = new int[][] { { 0, 1 }, { 0, -1 }, { 1, 0 }, { -1, 0 } };
+        this.dirs = new int[][]{{0, 1}, {0, -1}, {1, 0}, {-1, 0}};
         for (int i = 0; i < m; i++) {
             for (int j = 0; j < n; j++) {
                 if (grid[i][j] == '1') {

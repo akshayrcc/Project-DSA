@@ -1,3 +1,5 @@
+package com.akshayram.s30.Competitive_Coding_1;
+
 //Min Heap Implementation using Array
 //TC: O(log n) SC: O(n)
 class Problem2 {

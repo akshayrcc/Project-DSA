@@ -1,3 +1,5 @@
+package com.akshayram.s30.Binary_Search_2;
+
 //TC: O(log n).
 //SC: O(1)
 public class Problem_2 {

@@ -1,3 +1,5 @@
+package com.akshayram.s30.Array_2;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -11,12 +13,7 @@ class GameOfLife {
     public static void main(String[] args) {
         GameOfLife solution = new GameOfLife();
 
-        int[][] board1 = {
-                { 0, 1, 0 },
-                { 0, 0, 1 },
-                { 1, 1, 1 },
-                { 0, 0, 0 }
-        };
+        int[][] board1 = {{0, 1, 0}, {0, 0, 1}, {1, 1, 1}, {0, 0, 0}};
 
         System.out.println("Original Board:");
         printBoard(board1);
@@ -77,7 +74,7 @@ class GameOfLife {
     public int countLiveNeighbours(int[][] board, int row, int col) {
         int count = 0;
         // Up, Down, left, right, UPL, UPR, LRL, LRR
-        int[][] dirs = { { -1, 0 }, { 1, 0 }, { 0, -1 }, { 0, 1 }, { -1, -1 }, { -1, 1 }, { 1, -1 }, { 1, 1 } };
+        int[][] dirs = {{-1, 0}, {1, 0}, {0, -1}, {0, 1}, {-1, -1}, {-1, 1}, {1, -1}, {1, 1}};
 
         for (int[] dir : dirs) {
             int newRow = row + dir[0];
@@ -98,11 +95,11 @@ class NumbersDisappeared {
     public static void main(String[] args) {
         NumbersDisappeared solution = new NumbersDisappeared();
 
-        int[] nums1 = { 4, 3, 2, 7, 8, 2, 1 };
+        int[] nums1 = {4, 3, 2, 7, 8, 2, 1};
         List<Integer> result1 = solution.findDisappearedNumbers(nums1);
         System.out.println("Disappeared Numbers 1: " + result1);
 
-        int[] nums2 = { 1, 1, 2, 2, 3, 4, 4 };
+        int[] nums2 = {1, 1, 2, 2, 3, 4, 4};
         List<Integer> result2 = solution.findDisappearedNumbers(nums2);
         System.out.println("Disappeared Numbers 2: " + result2);
     }

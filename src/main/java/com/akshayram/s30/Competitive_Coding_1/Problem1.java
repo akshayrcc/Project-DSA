@@ -1,3 +1,5 @@
+package com.akshayram.s30.Competitive_Coding_1;
+
 //Missing Number in sorted num array
 class Problem1 {
     //TC: O(log n) SC: O(1)
