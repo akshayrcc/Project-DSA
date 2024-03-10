@@ -1,4 +1,5 @@
-package com.akshayram.s30.Linked_List_2;// Did this code successfully run on Leetcode : Yes
+package com.akshayram.s30.Linked_List_2;
+// Did this code successfully run on Leetcode : Yes
 // Any problem you faced while coding this : No
 // Your code here along with comments explaining your approach
 
@@ -23,7 +24,7 @@ public class Linked_List_2 {
 // Time Complexity : O(1)
 // Space Complexity : O(1)
     void deleteNode(ListNode del){
-        del.data = del.next.data;
+        del.val = del.next.val;
         del.next = del.next.next;
     }
 //    143. Reorder List
