@@ -12,15 +12,15 @@ public class ShortestUncommonSubstring2 {
 
 
     public static String[] shortestSubstrings(String[] arr) {
-        int n = arr.length;
-        String[] ret = new String[n];
-        for (int i = 0; i < n; i++) {
+        int N = arr.length;
+        String[] ret = new String[N];
+        for (int i = 0; i < N; i++) {
             String best = null;
             for (int j = 0; j < arr[i].length(); j++) {
                 inner:
                 for (int k = j + 1; k <= arr[i].length(); k++) {
                     String t = arr[i].substring(j, k);
-                    for (int l = 0; l < n; l++) {
+                    for (int l = 0; l < N; l++) {
                         if (l == i) continue;
                         if (arr[l].contains(t)) {
                             continue inner;
