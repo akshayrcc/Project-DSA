@@ -8,55 +8,44 @@ class _01Matrix {
 
     public static void main(String[] args) {
         System.out.println("Started...");
-        int[][] mat = new int[][]{{0, 0, 0}, {0, 1, 0}, {0, 0, 0}};
+        int[][] mat = new int[][]{{0, 0, 0}, {0, 1, 0}, {1, 1, 1}};
         int[][] ans = updateMatrix(mat);
-
-        System.out.println();
-    }
-
-    public static int[][] updateMatrix(int[][] mat) {
-        m = mat.length;
-        n = mat[0].length;
-
-        ans = new int[m][n];
-        visitedMat = new boolean[m][n];
-
         for (int i = 0; i < m; i++) {
             for (int j = 0; j < n; j++) {
-                if (mat[i][j] == 0) {
-                    ans[i][j] = 0;
-                    continue;
+                System.out.print(ans[i][j] + " ");
+            }
+            System.out.println(" ");
+        }
+
+
+    }
+
+    public static int[][] updateMatrix(int[][] grid) {
+        int rows = grid.length;
+        int cols = grid[0].length;
+
+        int MAX_DISTANCE = rows + cols + 1;
+
+        // First pass: check for left and top neighbours
+        for (int i = 0; i < rows; i++) {
+            for (int j = 0; j < cols; j++) {
+                if (grid[i][j] != 0) {
+                    grid[i][j] = MAX_DISTANCE;
+                    grid[i][j] = Math.min(grid[i][j], Math.min(i > 0 ? grid[i - 1][j] + 1 : MAX_DISTANCE,
+                            j > 0 ? grid[i][j - 1] + 1 : MAX_DISTANCE));
                 }
-                // one case
-                int temp = bfs(mat, i, j);
-                ans[i][j] = temp;
             }
         }
-        return ans;
+
+        // Second pass: check for the bottom and right neighbours.
+        for (int i = rows - 1; i >= 0; i--) {
+            for (int j = cols - 1; j >= 0; j--) {
+                grid[i][j] = Math.min(grid[i][j], Math.min(i < rows - 1 ? grid[i + 1][j] + 1 : MAX_DISTANCE,
+                        j < cols - 1 ? grid[i][j + 1] + 1 : MAX_DISTANCE));
+            }
+        }
+        return grid;
     }
 
-    public static int bfs(int[][] inMat, int r, int c) {
-        //check if out of boundary
-        if ((r >= m || r < 0) || (c >= n || c < 0)) {
-            return 0;
-        }
 
-        //if visited
-        if (visitedMat[r][c]) {
-            return ans[r][c];
-        } else {
-            visitedMat[r][c] = true;
-        }
-
-        //base condition
-        if (inMat[r][c] == 0) {
-            return 1;
-        }
-
-        //explore children
-        if (inMat[r][c] != 0) {
-            return 1 + Math.min(bfs(inMat, r - 1, c), Math.min(Math.min(bfs(inMat, r - 1, c), bfs(inMat, r + 1, c)), Math.min(bfs(inMat, r, c - 1), bfs(inMat, r, c + 1))));
-        }
-        return 0;
-    }
 }
