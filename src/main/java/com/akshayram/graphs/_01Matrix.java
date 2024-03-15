@@ -17,7 +17,6 @@ class _01Matrix {
             System.out.println(" ");
         }
 
-
     }
 
     public static int[][] updateMatrix(int[][] grid) {
