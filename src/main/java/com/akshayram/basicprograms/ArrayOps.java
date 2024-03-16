@@ -679,6 +679,31 @@ class ArrayOps {
         return count;
     }
 
+    //TC: O(n) SC: O(n)
+    public int findMaxLength(int[] nums) {
+        int N = nums.length;
+        if (N == 0 || N == 1) return 0;
+        //replacing all 0s with -1.
+        for (int i = 0; i < N; i++) {
+            if (nums[i] == 0) nums[i] = -1;
+        }
+        Map<Integer, Integer> hmap = new HashMap<>(); //sum, index
+        hmap.put(0, -1); //initial: 0 sum at index=-1
+        int currSum = 0;
+        int maxSize = 0;
+        for (int i = 0; i < N; i++) {
+            currSum += nums[i];
+            if (hmap.containsKey(currSum)) {
+                int firstSameSumIndex = hmap.get(currSum);
+                int currSize = i - firstSameSumIndex;
+                maxSize = Math.max(maxSize, currSize);
+            } else {
+                hmap.put(currSum, i);
+            }
+        }
+        return maxSize;
+    }
+
     public static void main(String[] args) {
         //    String num = "014455"; // "42352338";//"2300019";//"6777133339";
         //    String result = largestGoodInteger(num);
