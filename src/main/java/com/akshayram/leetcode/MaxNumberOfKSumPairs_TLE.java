@@ -3,7 +3,7 @@ package com.akshayram.leetcode;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
-public class MaxNumberOfKSumPairs_TL_exceeded {
+class MaxNumberOfKSumPairs_TLE {
 
 	public static void main(String[] args) {
 		int[] arr1 = new int[] { 1, 2, 3, 4 };

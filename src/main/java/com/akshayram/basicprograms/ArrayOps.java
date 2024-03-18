@@ -704,6 +704,30 @@ class ArrayOps {
         return maxSize;
     }
 
+    //TC: O(n log n) SC: O(n)
+    public int findMinArrowShots(int[][] points) {
+        if (points == null || points.length == 0) return 0;
+
+        // sort by x_end
+        Arrays.sort(points, (o1, o2) -> {
+            if (o1[1] == o2[1]) return 0;
+            if (o1[1] < o2[1]) return -1;
+            return 1;
+        });
+
+        int arrows = 1;
+        int curr_x_start, curr_x_end, prev_x_end = points[0][1];
+        for (int[] pt : points) {
+            curr_x_start = pt[0];
+            curr_x_end = pt[1];
+            if (prev_x_end < curr_x_start) {
+                arrows++;
+                prev_x_end = curr_x_end;
+            }
+        }
+        return arrows;
+    }
+
     public static void main(String[] args) {
         //    String num = "014455"; // "42352338";//"2300019";//"6777133339";
         //    String result = largestGoodInteger(num);
