@@ -29,4 +29,30 @@ public class BasicLLOps {
         return false;
     }
 
+    //TC: O(n) SC: O(n)
+    //recursive
+    public ListNode reverseList(ListNode head) {
+        if(head == null || head.next == null){
+            return head;
+        }
+        ListNode result = reverseList(head.next);
+        head.next.next = head;
+        head.next = null;
+        return result;
+    }
+
+    //TC: O(n) SC: O(1)
+    //iterative
+    public ListNode reverseList2(ListNode head) {
+        ListNode prev = null;
+        ListNode curr = head;
+        while(curr != null){
+            ListNode nextTemp = curr.next;
+            curr.next = prev;
+            prev = curr;
+            curr = nextTemp;
+        }
+        return prev;
+    }
+
 }
