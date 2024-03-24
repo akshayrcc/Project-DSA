@@ -31,6 +31,14 @@ public class BasicLLOps {
         return false;
     }
 
+    public boolean hasCycle2(ListNode head){
+        if(head == null || head.next == null) return false;
+        if(head.next == head) return true;
+        ListNode nextNode = head.next;
+        head.next = head;
+        return hasCycle(nextNode);
+    }
+
     //TC: O(n) SC: O(n)
     //recursive
     public ListNode reverseList(ListNode head) {
