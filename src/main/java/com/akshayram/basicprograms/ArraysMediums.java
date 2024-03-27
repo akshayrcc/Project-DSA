@@ -50,4 +50,34 @@ public class ArraysMediums {
         return a + (k - 1) / a - 1;
     }
 
+    // 41. First Missing Positive
+    public int firstMissingPositive(int[] nums) {
+        //TC: O(n) SC: O(1)
+        int N = nums.length;
+        int i = 0;
+        //now placing all vals to their own index... val-1
+        while (i < N) {
+            int correctIndex = nums[i] - 1;
+            if (nums[i] > 0 && nums[i] <= N && nums[i] != nums[correctIndex]) {
+                swap(nums, i, correctIndex);
+            } else {
+                i++;
+            }
+        }
+
+        //now checking for first mismatch from begining, thats the missing first positive
+        for (int j = 0; j < N; j++) {
+            if (nums[j] != j + 1) return j + 1;
+        }
+
+        return N + 1;
+    }
+
+    private void swap(int[] nums, int x, int y) {
+        int temp = nums[x];
+        nums[x] = nums[y];
+        nums[y] = temp;
+    }
+
+
 }
