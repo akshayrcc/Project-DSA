@@ -1,5 +1,8 @@
 package com.akshayram.basicprograms;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public class ArraysMediums {
 
     //3091. Apply Operations to Make Sum of Array Greater Than or Equal to k
@@ -92,6 +95,23 @@ public class ArraysMediums {
             right++;
         }
         return count;
+    }
+
+    //TC: O(n) SC:O(n)
+    public int maxSubarrayLength(int[] nums, int k) {
+        int ans = 0, start = -1;
+        int N = nums.length;
+        Map<Integer, Integer> freqMap = new HashMap<>();
+        for (int end = 0; end < N; end++) {
+            freqMap.put(nums[end], 1 + freqMap.getOrDefault(nums[end], 0));
+            //check freq exceed condition and trim from the beginning
+            while (freqMap.get(nums[end]) > k) {
+                start++;
+                freqMap.put(nums[start], freqMap.get(nums[start]) - 1);
+            }
+            ans = Math.max(ans, end - start); //maximize the ans
+        }
+        return ans;
     }
 
 
