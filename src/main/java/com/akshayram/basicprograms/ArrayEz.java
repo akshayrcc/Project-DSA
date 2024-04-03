@@ -2,7 +2,30 @@ package com.akshayram.basicprograms;
 
 import java.util.*;
 
-class ArrayOps {
+class ArrayEz {
+
+    //TC: O(n) SC:(n)..recursive
+    public int lengthOfLastWord(String s) {
+        // System.out.println("=>"+s);
+        if (s.length() == 1) {
+            if (s.charAt(0) == ' ') return 0;
+            else return 1;
+        }
+        int lastSpaceIndex = s.lastIndexOf(" ");
+        if (lastSpaceIndex == s.length() - 1) { //last char is space, so perform trim right action using recursion
+            return lengthOfLastWord(s.substring(0, s.length() - 1));
+        }
+
+        //last char is not space.. so get space ear
+        return (s.substring(lastSpaceIndex + 1)).length();
+    }
+
+    public int lengthOfLastWord2(String s) {
+        s = s.trim();
+        int lastSpace = s.lastIndexOf(" ");
+        return (s.substring(lastSpace + 1)).length();
+    }
+
     public int[] intersect(int[] nums1, int[] nums2) {
         if (nums1.length > nums2.length) {
             return intersect(nums2, nums1);
