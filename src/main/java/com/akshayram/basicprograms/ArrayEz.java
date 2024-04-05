@@ -16,7 +16,7 @@ class ArrayEz {
             return lengthOfLastWord(s.substring(0, s.length() - 1));
         }
 
-        //last char is not space.. so get space ear
+        //last char is not space... so get space ear
         return (s.substring(lastSpaceIndex + 1)).length();
     }
 

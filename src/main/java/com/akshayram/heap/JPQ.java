@@ -6,6 +6,8 @@ import java.util.PriorityQueue;
 import java.util.Comparator;
 import java.util.Scanner;
 
+
+
 class Student {
     private final int id;
     private final String name;

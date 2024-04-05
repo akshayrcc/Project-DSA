@@ -39,7 +39,8 @@ public class KthSmallest {
                 cnt = cnt + i + 1;
                 j++;
             }
-        } return cnt;
+        }
+        return cnt;
     }
 
     public static void main(String[] args) {

@@ -15,6 +15,18 @@ public class ArrayHard {
         Map<Integer, Integer> freqMap = new HashMap<>();
         int left = 0, totalCount = 0;
 
+        //iterate the nums array
+        for(int i=0;i<nums.length; i++){
+            //get the count of the element
+            int count = freqMap.getOrDefault(nums[i], 0);
+            //increment the count
+            freqMap.put(nums[i], count+1);
+            //if the count is 1, increment the totalCount
+            if(count == 0){
+                totalCount++;
+            }
+        }
+
         // Right pointer of the sliding window iterates through the array.
         for (int right = 0; right < nums.length; right++) {
             freqMap.put(nums[right], freqMap.getOrDefault(nums[right], 0) + 1);
@@ -28,6 +40,7 @@ public class ArrayHard {
                 }
                 left++;
             }
+
 
             // Update the total count by adding the length of the current subarray.
             totalCount += (right - left + 1);
