@@ -1,6 +1,8 @@
 package com.akshayram.s30.Design_3;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 // TC: O(1) SC: O(C).. where C is LRUCache capacity...
@@ -90,4 +92,38 @@ class LRUCache {
         before.next = after;
         after.prev = before;
     }
+
+    /*
+     * 1. LRU Cache
+     * Given n request ids as an array of strings, requests, and an integer k, after all requests are received, find the k most recent requests. Report the answer in order of most recent to least recent.
+     * Example:Suppose n = 5, requests = ["item1", "item2","item3", "item1", "item3"], and k = 3.
+     * */
+
+    public static List<String> getLatestKRequests(String[] requests, int k) {
+        int N = requests.length;
+
+        // Use a HashMap to store request and its most recent access index
+        Map<String, Integer> requestIndexMap = new HashMap<>();
+        List<String> result = new ArrayList<>();
+
+        // Iterate from right to left, considering only the most recent occurrence of each request
+        for (int i = N - 1; i >= 0 && result.size() < k; i--) {
+            String request = requests[i];
+            if (!requestIndexMap.containsKey(request)) { // Only consider the most recent occurrence
+                requestIndexMap.put(request, i);
+                result.add(request); // Add to the List directly
+            }
+        }
+        return result;
+    }
+
+    public static void main(String[] args) {
+        String[] requests = {"item1", "item2", "item3", "item1", "item3"};
+//        String[] requests = { "item1" };
+        int k = 3;
+        List<String> result = getLatestKRequests(requests, k);
+        System.out.println(result);
+    }
+
+
 }
