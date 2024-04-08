@@ -17,7 +17,7 @@ public class StringOperations {
         String firstUnique2 = "loveleetcode";
 //        System.out.println("First Unique: " + firstUniqChar_1(firstUnique2));
 
-        System.out.println("Haystack test: " + strStr2("sadbutsad","sad"));
+        System.out.println("Haystack test: " + strStr2("sadbutsad", "sad"));
 
     }
 
@@ -166,12 +166,12 @@ public class StringOperations {
         int needleLen = needle.length();
         int haystackLen = haystack.length();
         for (int i = 0; i < haystackLen; i++) {
-            if(retValue != -1){
+            if (retValue != -1) {
                 return i;
             }
             if (haystackLen - i > 0 && (haystackLen - i >= needle.length())) {
-                System.out.println(haystack.substring(i, i+ needleLen ));
-                if (haystack.substring(i, i+ needleLen).equals(needle)) {
+                System.out.println(haystack.substring(i, i + needleLen));
+                if (haystack.substring(i, i + needleLen).equals(needle)) {
                     retValue = i;
                     return retValue;
                 }
@@ -182,6 +182,35 @@ public class StringOperations {
 
     public static int strStr3(String haystack, String needle) {
         return haystack.indexOf(needle);
+    }
+
+    //TC: O(n) SC:O(n)
+    public boolean checkValidString(String s) {
+        int N = s.length();
+        Deque<Integer> openBracketsStack = new ArrayDeque<>();
+        Deque<Integer> asterisksStack = new ArrayDeque<>();
+        for (int i = 0; i < s.length(); i++) {
+            char ch = s.charAt(i);
+            if (ch == '(') {
+                openBracketsStack.push(i);
+            } else if (ch == '*') {
+                asterisksStack.push(i);
+            } else {
+                if (!openBracketsStack.isEmpty()) {
+                    openBracketsStack.pop();
+                } else if (!asterisksStack.isEmpty()) {
+                    asterisksStack.pop();
+                } else {
+                    return false;
+                }
+            }
+        }
+        while (!openBracketsStack.isEmpty() && !asterisksStack.isEmpty()) {
+            if (openBracketsStack.pop() > asterisksStack.pop()) {
+                return false;
+            }
+        }
+        return openBracketsStack.isEmpty();
     }
 
 }
