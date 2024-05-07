@@ -3,6 +3,22 @@ package com.akshayram.linkedlist;
 import com.akshayram.datastructures.ListNode;
 
 public class LinkedListMediums {
+
+    //TC: O(n) SC: O(1)
+    public ListNode doubleIt_1(ListNode head) {
+        if (head.val > 4) {
+            head = new ListNode(0, head);
+        }
+        // Traverse the linked list
+        for (ListNode node = head; node != null; node = node.next) {
+            node.val = (node.val * 2) % 10;
+            if (node.next != null && node.next.val > 4) {
+                node.val++;
+            }
+        }
+        return head;
+    }
+
     //TC: O(n) SC: O(n) .. recursive stack
     int carryForward = 0;
 
