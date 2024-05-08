@@ -751,6 +751,36 @@ class ArrayEz {
         return arrows;
     }
 
+    //TC: O(n) SC: O(n)
+    //TC: O(n+m) SC: O(m)
+    public String[] findRelativeRanks(int[] score) {
+        int N = score.length;
+        String[] ans = new String[N];
+        Map<Integer, Integer> hmap = new TreeMap<>();
+        for (int i = 0; i < N; i++) {
+            hmap.put(score[i], i);
+        }
+        int M = hmap.size();
+        int mapIndex = 0;
+        for (Map.Entry<Integer, Integer> set : hmap.entrySet()) {
+            // System.out.println(set.getKey() + " "+ set.getValue());
+            int key = set.getKey();
+            int val = set.getValue();
+            if (mapIndex == M - 1) {
+                ans[val] = "Gold Medal";
+            } else if (mapIndex == M - 2) {
+                ans[val] = "Silver Medal";
+            } else if (mapIndex == M - 3) {
+                ans[val] = "Bronze Medal";
+            } else {
+                ans[val] = String.valueOf(M - mapIndex);
+            }
+            mapIndex++;
+        }
+
+        return ans;
+    }
+
     public static void main(String[] args) {
         //    String num = "014455"; // "42352338";//"2300019";//"6777133339";
         //    String result = largestGoodInteger(num);
