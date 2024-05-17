@@ -3,7 +3,7 @@ package com.akshayram.javafunctional;
 import java.util.function.Consumer;
 import java.util.stream.IntStream;
 
-public class JavaStreams {
+public class JavaStreamsAPI {
 
     public static void main(String[] args) {
         // IntStream
@@ -12,9 +12,6 @@ public class JavaStreams {
         IntStream.range(1, 10).forEach(System.out::println);
 
         System.out.println("Method 2");
-        // range excludes the
-        IntStream.range(1, 10).forEach(System.out::println);
-
         System.out.println("Using rangeClosed");
         // rangeClosed includes the number
         IntStream.rangeClosed(1, 10).forEach(System.out::println);
@@ -24,8 +21,13 @@ public class JavaStreams {
                 .forEach(
                         n -> System.out.print(n + " "));
 
-        // IntStream.rangeClosed(1, 100).forEach(n -> { if (n % 10) { System.out.println(n + " ") } else
-        // { System.out.print(n + " ")} } );  //.forEach(n -> { System.out.print(n + " "); });
+        IntStream.rangeClosed(1, 100).forEach(n -> {
+            if (n % 10 == 0) {
+                System.out.println(n + " ");
+            } else {
+                System.out.print(n + " ");
+            }
+        });  //.forEach(n -> { System.out.print(n + " "); });
         System.out.println("\nLast :");
         IntStream.rangeClosed(1, 100).filter(num -> num % 10 == 0).forEach(System.out::println);
 

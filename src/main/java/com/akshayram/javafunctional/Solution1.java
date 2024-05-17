@@ -7,8 +7,8 @@ import java.util.stream.Stream;
 
 public class Solution1 {
 
-    private static Map<String, Employee> map1 = new HashMap<>();
-    private static Map<String, Employee> map2 = new HashMap<>();
+    private static final Map<String, Employee> map1 = new HashMap<>();
+    private static final Map<String, Employee> map2 = new HashMap<>();
 
     public static void main(String[] args) {
         System.out.println("Ans" + justMethod(new int[]{1, -2, -3, 5}));

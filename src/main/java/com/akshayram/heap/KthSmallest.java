@@ -6,7 +6,7 @@ public class KthSmallest {
 
     // TC: O(n log k)  SC: O(1)
     public static int kthSmallest_1(int[][] matrix, int k) {
-        PriorityQueue<Integer> pq = new PriorityQueue<Integer>((a, b) -> (b - a));  //max heap
+        PriorityQueue<Integer> pq = new PriorityQueue<>((a, b) -> (b - a));  //max heap
         //loop through all numbers and build heap...
         for (int i = 0; i < matrix.length; i++) {
             for (int j = 0; j < matrix[0].length; j++) {
