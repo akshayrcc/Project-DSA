@@ -21,7 +21,7 @@ class Comp_Coding_5 {
                 visited[i] = true;
                 // recure
                 backtrack(n, pos + 1, visited);
-                // backtrack
+                // backtracking
                 visited[i] = false;
             }
         }

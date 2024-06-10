@@ -48,7 +48,7 @@ class BT4_Solution {
       sb.append(c);
       // recurse
       backtrack(groups, index + 1, sb);
-      // backtrack
+      // backtracking
       sb.deleteCharAt(sb.length() - 1);
     }
   }
@@ -127,7 +127,7 @@ class OptimalBuildingParking {
         grid[r][c] = 0;
         // recurse
         backtrack(grid, n - 1, i + 1);
-        // backtrack
+        // backtracking
         grid[r][c] = -1;
       }
     }

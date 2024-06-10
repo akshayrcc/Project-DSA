@@ -32,7 +32,7 @@ class Comp_Coding_6 {
                 swap(nums, index, j);
                 //recurse
                 dfs(nums, index + 1);
-                //backtrack
+                //backtracking
                 swap(nums, j, index);
             }
         }

@@ -42,7 +42,7 @@ class NQueens {
         // rcurse
         backtrack(board, n, r + 1);
 
-        // backtrack
+        // backtracking
         board[r][c] = false;
       }
     }
@@ -91,7 +91,7 @@ public class Solution {
     this.flag = false;
     for (int i = 0; i < m; i++) {
       for (int j = 0; j < n; j++) {
-        backtrack(board, word, i, j, 0); // call the backtrack function on all the elements
+        backtrack(board, word, i, j, 0); // call the backtracking function on all the elements
       }
     }
     return flag;
@@ -121,7 +121,7 @@ public class Solution {
         // pass new row and column value along with next index for next character
         backtrack(board, word, nr, nc, idx + 1);
       }
-      // backtrack
+      // backtracking
       // update the mutated value
       board[r][c] = word.charAt(idx);
     }

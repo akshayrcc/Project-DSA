@@ -1,5 +1,7 @@
 package com.akshayram.tree;
 
+import java.util.TreeSet;
+
 public class ConvertSortedArraytoBST {
     public TreeNode sortedArrayToBST(int[] nums) {
         if (nums.length == 0) {
@@ -15,5 +17,9 @@ public class ConvertSortedArraytoBST {
         root.left = sortedArrayToBST(num, start, mid - 1);
         root.right = sortedArrayToBST(num, mid + 1, end);
         return root;
+    }
+
+    public static void main(String[] args) {
+        TreeSet<Integer> set = new TreeSet<>();
     }
 }

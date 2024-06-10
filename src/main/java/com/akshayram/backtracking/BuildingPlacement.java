@@ -1,4 +1,4 @@
-package com.akshayram.backtrack;
+package com.akshayram.backtracking;
 
 import java.util.LinkedList;
 import java.util.Queue;
@@ -73,7 +73,7 @@ public class BuildingPlacement {
             grid[r][c] = 0;
             //rec
             backtrack(grid, n - 1, i + 1);
-            // backtrack
+            // backtracking
             grid[r][c] = -1;
         }
 
