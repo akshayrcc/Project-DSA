@@ -2,7 +2,7 @@ package com.akshayram.contests;
 
 import com.akshayram.tree.TreeNodeWithParent;
 
-public class TreeDFSPureSoft {
+public class TreeDFSPureStorage {
     public static TreeNodeWithParent dfs(TreeNodeWithParent TreeNodeWithParent, int target) {
         System.out.print(TreeNodeWithParent.value + " ");
         TreeNodeWithParent.visited = true;
