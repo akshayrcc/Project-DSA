@@ -2,6 +2,8 @@ package com.akshayram.linkedlist;
 
 import com.akshayram.datastructures.ListNode;
 
+import java.util.HashSet;
+import java.util.Set;
 import java.util.Stack;
 
 public class BasicLLOps {
@@ -31,9 +33,9 @@ public class BasicLLOps {
         return false;
     }
 
-    public boolean hasCycle2(ListNode head){
-        if(head == null || head.next == null) return false;
-        if(head.next == head) return true;
+    public boolean hasCycle2(ListNode head) {
+        if (head == null || head.next == null) return false;
+        if (head.next == head) return true;
         ListNode nextNode = head.next;
         head.next = head;
         return hasCycle(nextNode);
@@ -117,6 +119,15 @@ public class BasicLLOps {
             head2 = head2.next;
         }
         return true;
+    }
+
+    public ListNode modifiedList(int[] nums, ListNode head) {
+        Set<Integer> hset = new HashSet<>();
+        for (int i = 0; i < nums.length; i++) {
+            hset.add(nums[i]);
+        }
+        ListNode dummy = new ListNode(-1);
+
     }
 
 }
